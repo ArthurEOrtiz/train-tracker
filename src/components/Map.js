@@ -5,7 +5,6 @@ function Map(){
   const mapContainerStyling = {
     backgroundColor: 'white',
     width: '100%'
-    
   }
 
   const imgStyling = {
@@ -15,7 +14,10 @@ function Map(){
   return(
     <React.Fragment>
       <div style={mapContainerStyling}>
-        <img style={imgStyling} src={chicagoMap} alt="map of the chicago L system" />
+        <img usemap="#stationLinks" style={imgStyling} src={chicagoMap} alt="map of the chicago L system" />
+        <map name="stationLinks">
+          <area shape="rect" coords="" alt="test" href="#"></area>
+        </map>
       </div>
     </React.Fragment>
   );
