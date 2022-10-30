@@ -1,26 +1,25 @@
 import React from "react";
-import chicagoMap from "./../img/ctamap_Lsystem.png";
+import { useLoadScript } from '@react-google-maps/api';
 
-function Map(){
-  const mapContainerStyling = {
-    backgroundColor: 'white',
-    width: '100%',
-    // padding: '0,0'
-  }
+function Map() {
+  const {isLoaded} = useLoadScript({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    libraries: ["places"]
+  });
 
-  const imgStyling = {
-    width: '100%'
+  if (!isLoaded) {
+    return(
+      <React.Fragment>
+        <h1>MAP IS LOADING</h1>
+      </React.Fragment>
+    )
   }
 
   return(
     <React.Fragment>
-      <div style={mapContainerStyling}>
-        <img usemap="#stationLinks" style={imgStyling} src={chicagoMap} alt="map of the chicago L system" />
-        <map name="stationLinks">
-          <area shape="rect" coords="0,0,400,400" alt="O'hare" href="#"/>
-        </map>
-      </div>
+      <h1>This is a map</h1>
     </React.Fragment>
   );
 }
+
 export default Map
