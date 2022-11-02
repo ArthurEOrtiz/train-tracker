@@ -25,7 +25,12 @@ function Map(){
           <h1>Controls</h1>
         </div>
         <div className="map">
-          <GoogleMap zoom={10} center={center} mapContainerClassName="map-container"></GoogleMap>
+          <GoogleMap 
+            zoom={10} 
+            center={center} 
+            mapContainerClassName="map-container"
+            options={option}
+            ></GoogleMap>
         </div>
       </div>
     </React.Fragment>

@@ -14,3 +14,6 @@
 20221101 - 1800 
   * Got the API to display the map, but I'm having trouble having the key to work in the .env. The example I'm followig along with is using typescript and next.js and i think there is something that i have to retool for things to work properly. Also whats is odd is that when i console.log the API key it will log the key twice.
  
+  * Restarting my computer seemed to get things going and now I have some wierd glitches with git hub.
+
+  
