@@ -13,6 +13,11 @@ function Map(){
 
   const center = useMemo(() => ({lat: 41.87, lng: -87.62 }),[]);
 
+  const option = useMemo(()=> ({
+    disableDefaultUI: true,
+    clickableIcons: false
+  }), []);
+
   return (
     <React.Fragment>
       <div className="container">
