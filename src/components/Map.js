@@ -11,7 +11,7 @@ import {
 
 function Map(){
 
-  const center = useMemo(() => ({lat: 42, lng: 88 }),[]);
+  const center = useMemo(() => ({lat: 41.87, lng: -87.62 }),[]);
 
   return (
     <React.Fragment>
@@ -20,7 +20,7 @@ function Map(){
           <h1>Controls</h1>
         </div>
         <div className="map">
-          <GoogleMap zoom={10} center={chicago} mapContainerClassName="map-container"></GoogleMap>
+          <GoogleMap zoom={10} center={center} mapContainerClassName="map-container"></GoogleMap>
         </div>
       </div>
     </React.Fragment>
