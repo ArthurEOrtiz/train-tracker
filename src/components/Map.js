@@ -8,11 +8,10 @@ import {
   MarkerClusterer,
 } from "@react-google-maps/api";
 
-const center = { lat: 41.85, lng: -87.65 };
 
 function Map(){
 
-  
+  const center = useMemo(() => ({lat: 42, lng: 88 }),[]);
 
   return (
     <React.Fragment>
@@ -21,7 +20,7 @@ function Map(){
           <h1>Controls</h1>
         </div>
         <div className="map">
-          <GoogleMap zoom={10} center={{lat: 42, lng: 88}} mapContainerClassName="map-container"></GoogleMap>
+          <GoogleMap zoom={10} center={center} mapContainerClassName="map-container"></GoogleMap>
         </div>
       </div>
     </React.Fragment>
