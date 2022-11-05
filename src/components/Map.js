@@ -14,6 +14,7 @@ function Map(){
   const center = useMemo(() => ({lat: 41.87, lng: -87.62 }),[]);
 
   const option = useMemo(()=> ({
+    mapId: "23452f45ef043bfc",
     disableDefaultUI: true,
     clickableIcons: false
   }), []);
@@ -26,7 +27,7 @@ function Map(){
         </div>
         <div className="map">
           <GoogleMap 
-            zoom={10} 
+            zoom={11} 
             center={center} 
             mapContainerClassName="map-container"
             options={option}
