@@ -5,7 +5,7 @@
   * Initial Commits, researching google and CTA APIs. 
   * The minimal viable product reports train arrival times to the user. 
 
-### **20221030**
+### 20221030
 
   1200 
 
@@ -14,7 +14,7 @@
   * The pixel coordinates change with the scalling of the image so far. I'm unsure if this is the right approach, I will be researching to see if someone else has built something similar. 
 
 
-### **20221031**
+### 20221031
 
   1800
 
@@ -22,7 +22,7 @@
 
   * Using [this repo](https://github.com/leighhalliday/google-maps-react-crash-course) as an example 
 
-### **20221101**
+### 20221101
 
   1800 
 
@@ -30,7 +30,7 @@
  
   * Restarting my computer seemed to get things going and now I have some wierd glitches with git hub.
 
-### **20221105**
+### 20221105
   
   1600 
 
@@ -40,6 +40,8 @@
 
   * Researching Youtube tutorials to better understand Google API's
   * [Google Maps & Google Places In React](https://www.youtube.com/watch?v=WZcxJGmLbSo) - This YouTube tutorial is 2 years old but uses plain javascript in React. 
+
   1924 
+  
   * Trying to figure out how to deploy markers, knowing that the CTA API will provide the lat and lng information required. 
 
