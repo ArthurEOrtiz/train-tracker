@@ -12,7 +12,7 @@ function Map(){
 
   const mapStyling = "map-container";
 
-  // const howard = {lat: 41.903, lng: -87.636}
+  const howard = {lat: 41.903, lng: -87.636}
 
 
   const option = useMemo(()=> ({
@@ -38,7 +38,8 @@ function Map(){
             }}
             >
               <Marker 
-              position={{lat: 41.903, lng: -87.636}} />
+              key={1}
+              position={{lat: 41.90383, lng: -87.63685}} />
             </GoogleMap>
         </div>
       </div>

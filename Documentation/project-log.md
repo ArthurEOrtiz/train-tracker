@@ -42,6 +42,11 @@
   * [Google Maps & Google Places In React](https://www.youtube.com/watch?v=WZcxJGmLbSo) - This YouTube tutorial is 2 years old but uses plain javascript in React. 
 
   1924 
-  
+
   * Trying to figure out how to deploy markers, knowing that the CTA API will provide the lat and lng information required. 
 
+### 20221106
+
+  1057
+
+  * Exploring Google markers some more to display train stations 
