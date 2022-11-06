@@ -50,3 +50,5 @@
   1057
 
   * Exploring Google markers some more to display train stations 
+  * Got the key to work, it needs a key as well as a position. 
+  

@@ -38,8 +38,11 @@ function Map(){
             }}
             >
               <Marker 
-              key={1}
-              position={{lat: 41.90383, lng: -87.63685}} />
+              key={12345}
+              position={{lat: 42.019161, lng: -87.67309}}
+              icon={{
+              url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 
+              />
             </GoogleMap>
         </div>
       </div>
