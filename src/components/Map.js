@@ -3,15 +3,17 @@ import {useState, useMemo, useCallback, useRef } from "react";
 import {
   GoogleMap,
   Marker,
-  DirectionsRenderer,
-  Circle,
-  MarkerClusterer,
 } from "@react-google-maps/api";
 
 
 function Map(){
 
   const center = useMemo(() => ({lat: 41.87, lng: -87.62 }),[]);
+
+  const mapStyling = "map-container";
+
+  // const howard = {lat: 41.903, lng: -87.636}
+
 
   const option = useMemo(()=> ({
     mapId: "23452f45ef043bfc",
@@ -29,9 +31,15 @@ function Map(){
           <GoogleMap 
             zoom={11} 
             center={center} 
-            mapContainerClassName="map-container"
+            mapContainerClassName = {mapStyling}
             options={option}
-            ></GoogleMap>
+            onClick={(event)=>{
+              console.log(event);
+            }}
+            >
+              <Marker 
+              position={{lat: 41.903, lng: -87.636}} />
+            </GoogleMap>
         </div>
       </div>
     </React.Fragment>
