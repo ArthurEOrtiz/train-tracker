@@ -24,8 +24,10 @@
 
 **20221105**
   1600 
+
   * The map has been deployed with some initial styling. Focusing on devolping it further before I deploy the CTA API. 
   1700 
+  
   * Researching Youtube tutorials to better understand Google API's
   * [Google Maps & Google Places In React](https://www.youtube.com/watch?v=WZcxJGmLbSo) - This YouTube tutorial is 2 years old but uses plain javascript in React. 
   1924 
