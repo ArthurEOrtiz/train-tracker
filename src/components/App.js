@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "./Header";
-import Map from "./Map";
+import MapLoader from "./MapLoader";
 import './App.css';
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <Map />
+      <MapLoader />
     </React.Fragment>
   );
 }

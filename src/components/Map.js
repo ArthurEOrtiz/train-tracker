@@ -1,26 +1,47 @@
 import React from "react";
-import chicagoMap from "./../img/ctamap_Lsystem.png";
+import {useState, useMemo, useCallback, useRef } from "react";
+import {
+  GoogleMap,
+  Marker,
+} from "@react-google-maps/api";
+
 
 function Map(){
-  const mapContainerStyling = {
-    backgroundColor: 'white',
-    width: '100%',
-    // padding: '0,0'
-  }
 
-  const imgStyling = {
-    width: '100%'
-  }
+  const center = useMemo(() => ({lat: 41.87, lng: -87.62 }),[]);
 
-  return(
+  const mapStyling = "map-container";
+
+  const option = useMemo(()=> ({
+    mapId: "23452f45ef043bfc",
+    disableDefaultUI: true,
+    clickableIcons: false
+  }), []);
+
+  return (
     <React.Fragment>
-      <div style={mapContainerStyling}>
-        <img usemap="#stationLinks" style={imgStyling} src={chicagoMap} alt="map of the chicago L system" />
-        <map name="stationLinks">
-          <area shape="rect" coords="0,0,400,400" alt="O'hare" href="#"/>
-        </map>
+      <div className="container">
+        <div className="controls">
+          <h1>Controls</h1>
+        </div>
+        <div className="map">
+          <GoogleMap 
+            zoom={11} 
+            center={center} 
+            mapContainerClassName = {mapStyling}
+            options={option}
+            >
+              <Marker 
+              key={13}
+              position={{lat: 42.019161, lng: -87.67309}}
+              icon={{
+              url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 
+              />
+            </GoogleMap>
+        </div>
       </div>
     </React.Fragment>
-  );
+    );
 }
+
 export default Map
