@@ -52,3 +52,16 @@
   * Exploring Google markers some more to display train stations 
   * Got the key to work, it needs a key as well as a position. 
   
+  1342 
+
+  * got the icons to display in the color i wanted 
+  * switching to explore the CTA API in order to display all the train stations on my map
+
+### 20221107
+
+  1947
+
+  * Looking into the CTA API documentation. there is a txt file that has all the stations and their lat lng values. Im going to merge this google API branch into main then start a new one that focuses on first parsing this data then displaying them on the map as markers. 
+
+
+  

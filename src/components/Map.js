@@ -12,9 +12,6 @@ function Map(){
 
   const mapStyling = "map-container";
 
-  const howard = {lat: 41.903, lng: -87.636}
-
-
   const option = useMemo(()=> ({
     mapId: "23452f45ef043bfc",
     disableDefaultUI: true,
@@ -33,12 +30,9 @@ function Map(){
             center={center} 
             mapContainerClassName = {mapStyling}
             options={option}
-            onClick={(event)=>{
-              console.log(event);
-            }}
             >
               <Marker 
-              key={12345}
+              key={13}
               position={{lat: 42.019161, lng: -87.67309}}
               icon={{
               url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 
