@@ -32,7 +32,7 @@ function Map(){
             options={option}
             >
               <Marker 
-              key={13}
+              key={18}
               position={{lat: 42.019161, lng: -87.67309}}
               icon={{
               url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 

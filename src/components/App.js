@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import MapLoader from "./MapLoader";
+import StationList from "./StationList";
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <React.Fragment>
       <Header />
       <MapLoader />
+      <StationList />
     </React.Fragment>
   );
 }
