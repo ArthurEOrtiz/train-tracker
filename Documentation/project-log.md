@@ -63,5 +63,9 @@
 
   * Looking into the CTA API documentation. there is a txt file that has all the stations and their lat lng values. Im going to merge this google API branch into main then start a new one that focuses on first parsing this data then displaying them on the map as markers. 
 
+### 20221108
 
+  1900
+
+  * I can no longer continue to build this app without more knowdlge about React and how to build components and use hooks and what not. Im going to find more online resources to round out my knowdgle 
   

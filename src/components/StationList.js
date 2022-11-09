@@ -6,8 +6,11 @@ function StationList(){
   fetch(stops)
     .then(r => r.text()) 
     .then(t => {
-      console.log(t);
+  
+      console.log(typeof t);
     });
+
+
 
   return (
     <React.Fragment>
