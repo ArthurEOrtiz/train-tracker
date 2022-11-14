@@ -51,4 +51,12 @@
 ### 2022113
 - 1900
   - Thinking about what components I am actually gonne need when I rebuild this one. 
+    - Station List : List of Stations 
+    - Station : Holds train times for arrivals 
+    - Arrivals : the estimated arrival time of all trains
+    - CTA Map : 
+      - map of the city displaying the Station Board information in a Heads up Display fasion.
+      - Utlizes Google API components
+
+
 
