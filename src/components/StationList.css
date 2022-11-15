@@ -16,6 +16,7 @@ table {
 tbody{
   font-size: .7em;
 }
+
 tr:nth-child(even) {
   background-color: white;
   color: black;
