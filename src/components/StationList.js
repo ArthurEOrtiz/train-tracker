@@ -1,20 +1,23 @@
 import React from 'react';
 import stops  from './../txt/stops.txt';
+import "./StationList.css";
+
 
 function StationList(){
-
   fetch(stops)
     .then(r => r.text()) 
     .then(t => {
-  
       console.log(typeof t);
     });
 
-
-
   return (
     <React.Fragment>
-      <h1> TRAIN STOPS </h1>
+      <div className="StationList-Container">
+        <h2>Arrival Times</h2>
+        <div className="StationList-Columns">
+
+        </div>
+      </div>
     </React.Fragment>
   );
 }
