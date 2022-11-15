@@ -5,7 +5,7 @@ function Header(){
   return (
     <React.Fragment>
       <div className="App-header">
-        <h1>CTA TRAIN TRACKER</h1>
+        <h1>CHICAGO "L" TIMES</h1>
       </div>
     </React.Fragment>
   );

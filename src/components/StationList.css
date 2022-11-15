@@ -2,6 +2,24 @@
   background-color: #00a1de;
   color: White;
   font-size: calc(8px + 2vmin);
-  padding: 1%;
-  align-content: flex-start;
+  padding-top: 1px;
+  padding-left: 1ch;
+  padding-bottom: .5em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90vmin;
+
+  text-align: left;
+}
+
+td, th {
+  text-align: left;
+  padding: .25em;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+  color: black;
 }

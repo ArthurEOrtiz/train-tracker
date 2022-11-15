@@ -16,7 +16,7 @@
 .App-header {
   background-color: #c60c30;
   font-size: calc(10px + 2vmin);
-  padding: 3%;
+  padding: 1ch;
   color: white;
 }
 
