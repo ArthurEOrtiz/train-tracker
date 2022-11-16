@@ -1,47 +1,44 @@
-// import React from "react";
-// import {useState, useMemo, useCallback, useRef } from "react";
-// import {
-//   GoogleMap,
-//   Marker,
-// } from "@react-google-maps/api";
+import React from "react";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
+const libraries = ["palces"]; // 1/2 this might go into stations later
+const mapContainerStyle = {
+  width: '100vw',
+  height: '100vh',
+};
 
-// function Map(){
+function Map(){
 
-//   const center = useMemo(() => ({lat: 41.87, lng: -87.62 }),[]);
+  const{ isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries// 2/2 this might go into stations later
+  });
 
-//   const mapStyling = "map-container";
+  if (loadError) {
+    return(
+    <React.Fragment>
+      <h1>Error Loading Maps</h1>;
+    </React.Fragment>
+    )
+  }
+  
+  if (!isLoaded) {
+    return(
+      <React.Fragment>
+        <h1>MAP IS LOADINNNGG</h1>
+      </React.Fragment>
+    )
+  }
 
-//   const option = useMemo(()=> ({
-//     mapId: "23452f45ef043bfc",
-//     disableDefaultUI: true,
-//     clickableIcons: false
-//   }), []);
+    return ( 
+    <React.Fragment>  
+      <GoogleMap
+        zoom={12} 
+        center={{lat: 41.8786, lng: -87.6251}}
+        mapContainerStyle={mapContainerStyle}
+      />
+    </React.Fragment>
+    );
+}
 
-//   return (
-//     <React.Fragment>
-//       <div className="container">
-//         <div className="controls">
-//           <h1>Controls</h1>
-//         </div>
-//         <div className="map">
-//           <GoogleMap 
-//             zoom={11} 
-//             center={center} 
-//             mapContainerClassName = {mapStyling}
-//             options={option}
-//             >
-//               <Marker 
-//               key={18}
-//               position={{lat: 42.019161, lng: -87.67309}}
-//               icon={{
-//               url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 
-//               />
-//             </GoogleMap>
-//         </div>
-//       </div>
-//     </React.Fragment>
-//     );
-// }
-
-// export default Map
+export default Map;
