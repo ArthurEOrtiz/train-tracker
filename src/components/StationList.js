@@ -12,6 +12,33 @@ function StationList(){
   //     console.log(typeof t);
   // });
 
+  const sampleStation = [
+    {
+      line: 'Blue' ,
+      station: 'Rosemont',
+      destination: 'O\'hare',
+      arrivalTime: '12:35 pm',
+    },
+    {
+      line: 'Red',
+      station: 'Jackson',
+      destination: 'Howard',
+      arrivalTime: '12:42 pm',
+    },
+    {
+      line: 'Pink',
+      station: '18th',
+      destination: '54th/Cermak',
+      arrivalTime: '12:52 pm',
+    },
+    {
+      line: 'Pink',
+      station: 'Morgan',
+      destination: 'Loop\'L\'',
+      arrivalTime: 'Delayed',
+    }
+  ];
+
 
   return (
     <React.Fragment>
@@ -28,12 +55,15 @@ function StationList(){
               </tr>
             </thead>
             <tbody>
-            <Station 
-            line="Blue" 
-            station="Rosemont"
-            destination="O'hare"
-            arrivalTime="12:25pm"
-            />
+            {sampleStation.map((station, index) =>
+              <Station 
+              line={station.line} 
+              station={station.station}
+              destination={station.destination}
+              arrivalTime={station.arrivalTime}
+              key={index}
+              />
+            )}
             </tbody>
           </table>
         </div>
