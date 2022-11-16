@@ -27,7 +27,14 @@ function StationList(){
                 <th>Arrival Times</th>
               </tr>
             </thead>
-            <Station />
+            <tbody>
+            <Station 
+            line="Blue" 
+            station="Rosemont"
+            destination="O'hare"
+            arrivalTime="12:25pm"
+            />
+            </tbody>
           </table>
         </div>
       </div>
