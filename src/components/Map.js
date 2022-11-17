@@ -1,10 +1,10 @@
 import React from "react";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
-const libraries = ["palces"]; // 1/2 this might go into stations later
+const libraries = ["places"]; // 1/2 this might go into stations later
 const mapContainerStyle = {
   width: '100vw',
-  height: '100vh',
+  height: '50vh',
 };
 
 function Map(){
