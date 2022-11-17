@@ -1,11 +1,14 @@
 import React from "react";
+import { useMemo } from "react";
+import "./Map.css";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
 const libraries = ["places"]; // 1/2 this might go into stations later
-const mapContainerStyle = {
-  width: '100vw',
-  height: '50vh',
-};
+const mapContainerStyle = "map-container";
+const center =  {
+  lat: 41.8786, 
+  lng: -87.6251
+}; 
 
 function Map(){
 
@@ -14,6 +17,13 @@ function Map(){
     libraries// 2/2 this might go into stations later
   });
 
+  const options = useMemo(()=> ({
+    disableDefaultUI: true,
+    clickableIcons: false,
+    zoomControl: true,
+  }), []);
+
+  
   if (loadError) {
     return(
     <React.Fragment>
@@ -34,8 +44,9 @@ function Map(){
     <React.Fragment>  
       <GoogleMap
         zoom={12} 
-        center={{lat: 41.8786, lng: -87.6251}}
-        mapContainerStyle={mapContainerStyle}
+        center={center}
+        mapContainerClassName={mapContainerStyle}
+        options={options}
       />
     </React.Fragment>
     );
