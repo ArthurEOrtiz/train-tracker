@@ -72,4 +72,7 @@
       - Working on the txt file parsing. 
       - Gonna have to get back into studying React in general to help grasp importing this txt file. 
 
+  ### 20221119
+    - 0730
+      - Working on diffrent data sets. Found a station list in JSON, working on decoding data. 
 
