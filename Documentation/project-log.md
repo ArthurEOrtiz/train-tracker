@@ -70,5 +70,6 @@
   ### 20221118
     - 1800
       - Working on the txt file parsing. 
+      - Gonna have to get back into studying React in general to help grasp importing this txt file. 
 
 

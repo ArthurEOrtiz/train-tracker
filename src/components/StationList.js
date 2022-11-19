@@ -2,15 +2,18 @@ import React from 'react';
 import Station from './Station';
 // import stops  from './../txt/stops.txt';
 import "./StationList.css";
+import stops from './../txt/stops.txt';
+
+const stopString =  fetch(stops)
+.then(r => r.text()) 
+.then(t => {
+  stopString = t;
+});;
 
 
 function StationList(){
   
-  // fetch(stops)
-  //   .then(r => r.text()) 
-  //   .then(t => {
-  //     console.log(typeof t);
-  // });
+
 
   const sampleStation = [
     {
