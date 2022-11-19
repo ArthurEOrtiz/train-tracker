@@ -1,5 +1,6 @@
 // import React from 'react';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Station from './Station';
 // import stops  from './../txt/stops.txt';
 import "./StationList.css";
@@ -9,7 +10,7 @@ function StationList(){
 
     // const [error, setError] = useState(null);
     // const [isLoaded, setIsLoaded] = useState(false);
-    const [rawData, setRawData] = useState();
+    // const [rawData, setRawData] = useState();
     
     // fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
     //   .then(response => response.text()) 
@@ -22,11 +23,11 @@ function StationList(){
       fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
       .then(response => response.text())
       .then(t => {
-        setRawData(t.results);
-      });
+        console.log(t.split('\n'));
+      })
     },[]);
 
-    console.log(rawData);
+    
   const sampleStation = [
     {
       line: 'Blue' ,
