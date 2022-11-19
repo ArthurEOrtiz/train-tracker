@@ -1,16 +1,32 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Station from './Station';
 // import stops  from './../txt/stops.txt';
 import "./StationList.css";
 
 
 function StationList(){
-    fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
-      .then(r => r.text()) 
-      .then(t => {
-        console.log(t);
-      });
 
+    // const [error, setError] = useState(null);
+    // const [isLoaded, setIsLoaded] = useState(false);
+    const [rawData, setRawData] = useState();
+    
+    // fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
+    //   .then(response => response.text()) 
+    //   .then(t => {
+    //     console.log(t);
+    //   });
+
+
+    useEffect(() => {
+      fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
+      .then(response => response.text())
+      .then(t => {
+        setRawData(t.results);
+      });
+    },[]);
+
+    console.log(rawData);
   const sampleStation = [
     {
       line: 'Blue' ,
