@@ -28,7 +28,12 @@ function StationList(){
     //   })
     // },[]);
 
-    
+    useEffect(() =>{
+        fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?blue=true`)
+        .then(response => response.json())
+        .then(jsonResponse => console.log(jsonResponse));
+    },[])
+
   const sampleStation = [
     {
       line: 'Blue' ,
