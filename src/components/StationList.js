@@ -19,14 +19,14 @@ function StationList(){
     //   });
 
 
-    useEffect(() => {
-      fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
-      .then(response => response.text())
-      .then(t => {
-        const stationArray = t.split('\n');
-        console.log(stationArray[0] + '\n'+ stationArray[1]);
-      })
-    },[]);
+    // useEffect(() => {
+    //   fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
+    //   .then(response => response.text())
+    //   .then(t => {
+    //     const stationArray = t.split('\n');
+    //     console.log(stationArray[0] + '\n'+ stationArray[1]);
+    //   })
+    // },[]);
 
     
   const sampleStation = [
