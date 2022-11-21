@@ -29,9 +29,17 @@ function StationMarker() {
     });
   },[])
 
-  const blueLineStops = stationData.filter(b => b.blue === true);
-  console.log(blueLineStops[1].stop_id);
+  // const blueLineStops = stationData.filter(b => b.blue === true);
 
+
+  const uniqueMapIds = stationData.reduce((idTally, stops) => {
+    idTally[stops.map_id] = (idTally[stops.map_id] || 0) +1;
+    return idTally;
+  }, {});
+
+  console.log(uniqueMapIds);
+
+  
     
   if (error) {
     return (
