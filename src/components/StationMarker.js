@@ -28,6 +28,7 @@ function StationMarker() {
 
     stationData.map((station, index)=>{
       console.log(
+        index,
         station.station_name,
         station.location.latitude,
         station.location.longitude

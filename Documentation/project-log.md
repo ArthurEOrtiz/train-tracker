@@ -76,3 +76,10 @@
     - 0730
       - Working on diffrent data sets. Found a station list in JSON, working on decoding data. 
 
+  ### 20221120
+
+    - 1800
+      - Been working on this for a few hours without documenting in the log...
+      - I have found a data a set that already comes in JSON, is reposneive to changes and does not require a modification to my CORS policy. 
+      - Looking to trim the data down to something useful to me. I think that maybe using several function. Although Im not sure I should put this into some class style component or something. 
+
