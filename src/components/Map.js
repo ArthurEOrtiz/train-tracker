@@ -2,6 +2,7 @@ import React from "react";
 import { useMemo } from "react";
 import "./Map.css";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import StationMarker from "./StationMarker";
 
 const libraries = ["places"]; // 1/2 this might go into stations later
 const mapContainerStyle = "map-container";
@@ -48,6 +49,7 @@ function Map(){
         mapContainerClassName={mapContainerStyle}
         options={options}
       />
+      <StationMarker/>
     </React.Fragment>
     );
 }

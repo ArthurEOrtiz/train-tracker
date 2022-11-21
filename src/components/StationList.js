@@ -1,16 +1,12 @@
-// import React from 'react';
+import React from 'react';
 // import React, { useState, useEffect } from 'react';
-import React, { useEffect } from 'react';
 import Station from './Station';
-// import stops  from './../txt/stops.txt';
 import "./StationList.css";
 
 
 function StationList(){
 
-    // const [error, setError] = useState(null);
-    // const [isLoaded, setIsLoaded] = useState(false);
-    // const [rawData, setRawData] = useState();
+    
     
     // fetch(`https://www.transitchicago.com/downloads/sch_data/CTA_STOP_XFERS.txt`)
     //   .then(response => response.text()) 
@@ -28,11 +24,7 @@ function StationList(){
     //   })
     // },[]);
 
-    useEffect(() =>{
-        fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?blue=true`)
-        .then(response => response.json())
-        .then(jsonResponse => console.log(jsonResponse));
-    },[])
+
 
   const sampleStation = [
     {
@@ -62,36 +54,37 @@ function StationList(){
   ];
 
 
-  return (
-    <React.Fragment>
-      <div className="StationList-Container">
-        <h2>Arrival Times</h2>
-        <div className="StationList-Table-Container">
-          <table className="StationList-Table">
-            <thead>
-              <tr>
-                <th>Line</th>
-                <th>Station</th>
-                <th>Destination</th>
-                <th>Arrival Times</th>
-              </tr>
-            </thead>
-            <tbody>
-            {sampleStation.map((station, index) =>
-              <Station 
-              line={station.line} 
-              station={station.station}
-              destination={station.destination}
-              arrivalTime={station.arrivalTime}
-              key={index}
-              />
-            )}
-            </tbody>
-          </table>
+    return (
+      <React.Fragment>
+        <div className="StationList-Container">
+          <h2>Arrival Times</h2>
+          <div className="StationList-Table-Container">
+            <table className="StationList-Table">
+              <thead>
+                <tr>
+                  <th>Line</th>
+                  <th>Station</th>
+                  <th>Destination</th>
+                  <th>Arrival Times</th>
+                </tr>
+              </thead>
+              <tbody>
+              {sampleStation.map((station, index) =>
+                <Station 
+                line={station.line} 
+                station={station.station}
+                destination={station.destination}
+                arrivalTime={station.arrivalTime}
+                key={index}
+                />
+              )}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </React.Fragment>
-  );
+      </React.Fragment>
+    );
+  
 }
 
 
