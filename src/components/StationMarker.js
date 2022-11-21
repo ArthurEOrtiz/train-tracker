@@ -6,7 +6,6 @@ function StationMarker() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stationData, setStationData] = useState([]);
-  // const [blueLineStation, setBlueLineStations] = useState([]);
 
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
@@ -19,27 +18,52 @@ function StationMarker() {
     })
     .then((jsonResponse) => {
       setStationData(jsonResponse)
-      // setBlueLineStations(jsonResponse.filter(b => b.blue === true))
       setIsLoaded(true)
-      // console.log(blueLineStation)
     })
     .catch((error) => {
       setError(error)
       setIsLoaded(true)
     });
+
   },[])
 
+  // const uniqueMapIds = Object.keys(stationData.reduce((idTally, stops) => 
+  //   {
+  //     idTally[stops.map_id] = (idTally[stops.map_id] || 0) +1;
+  //     return idTally;
+  //   },{})).map(Number);
+
+  // const uniqueMapIdCount = stationData.reduce((idTally, stops) => 
+  // {
+  //   idTally[stops.map_id] = (idTally[stops.map_id] || 0) +1;
+  //   return idTally;
+  // },{});
+
+
+    // const stations = stationData.reduce((stations, stops, i)=>{
+    //   stations[stops.map_id] = (stations[stops.map_id]|| {
+    //     station_name: stops.station_name,
+    //     lat: +stops.location.latitude,
+    //     lng: +stops.location.longitude,
+    //     stopIds: {stationData.filter(s => {s.map_id.includes(stops.map_id)})}
+    //   });
+    //     return stations;
+    //   },{});
+
+    const stations = stationData.reduce((stations, stops) =>{
+      stations[stops.map_id] = stationData.filter(s => (s.map_id.includes(stops.map_id)));
+      return stations;
+    },{});
+
+
+
+  console.log(stations);
+  // console.log(stationData[0]);
+  // console.log(stationData[0].map_id);
+  // console.log(uniqueMapIdCount);
   // const blueLineStops = stationData.filter(b => b.blue === true);
 
 
-  const uniqueMapIds = stationData.reduce((idTally, stops) => {
-    idTally[stops.map_id] = (idTally[stops.map_id] || 0) +1;
-    return idTally;
-  }, {});
-
-  console.log(uniqueMapIds);
-
-  
     
   if (error) {
     return (
@@ -57,11 +81,6 @@ function StationMarker() {
   } else {
     return (
       <React.Fragment>
-        {/* <Marker 
-        key={index}
-        position={{lat: +station.location.latitude, lng: +station.location.longitude}}
-        icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
-        />  */}
       </React.Fragment>
     );
   }
