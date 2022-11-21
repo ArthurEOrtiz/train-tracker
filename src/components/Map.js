@@ -48,8 +48,9 @@ function Map(){
         center={center}
         mapContainerClassName={mapContainerStyle}
         options={options}
-      />
+      >
       <StationMarker/>
+      </GoogleMap>
     </React.Fragment>
     );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { Marker } from "@react-google-maps/api";
 
 function StationMarker() {
 
@@ -26,28 +27,47 @@ function StationMarker() {
   },[])
 
 
-    stationData.map((station, index)=>{
-      console.log(
-        index,
-        station.station_name,
-        station.location.latitude,
-        station.location.longitude
-        );
-    });
+    // stationData.map((station, index)=>{
+    //   console.log(
+    //     index,
+    //     station.station_name,
+    //     station.location.latitude,
+    //     station.location.longitude
+    //     );
+    // });
 
+    // {stationData.map((station, index) =>
+    //   <li key={index}>
+    //     <p>{station.station_name}</p>
+    //   </li>
+    // )}
 
-  return (
-    <React.Fragment>
-    <h1>STATION DATA</h1>
-    <ul>
-      {stationData.map((station, index) =>
-        <li key={index}>
-          <p>{station.station_name}</p>
-        </li>
-      )}
-    </ul>
-    </React.Fragment>
-  );
+  if (error) {
+    return (
+      <React.Fragment>
+        <h1>Error Loading Station Markers</h1>
+        <p>Error: {error}</p>
+      </React.Fragment>
+    );
+  } else if (!isLoaded) {
+    return (
+      <React.Fragment>
+        <h1>...LOADING STATION MARKERS ON MAP...</h1>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        {stationData.map((station, index) =>
+          <Marker 
+          key={index}
+          position={{lat: +station.location.latitude, lng: +station.location.longitude}}
+          icon={{url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 
+          />
+        )}
+      </React.Fragment>
+    );
+  }
 }
 
 export default StationMarker;
