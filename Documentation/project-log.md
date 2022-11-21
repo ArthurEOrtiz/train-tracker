@@ -83,3 +83,15 @@
       - I have found a data a set that already comes in JSON, is reposneive to changes and does not require a modification to my CORS policy. 
       - Looking to trim the data down to something useful to me. I think that maybe using several function. Although Im not sure I should put this into some class style component or something. 
 
+    - 1900
+      - Trying to edit down the data. The problem is that if there is a station with multiple lines then things get a little blurry
+        - using Clark and Lake as an example ( "station_name": "Clark/Lake"). I know that it services the Blue, Pink, Green, Brown, Orange, and Purple Lines. Not the Red or Yellow Lines. 
+        - If I query its map_id 40380, the api returns 4 results. 
+            - Blue to Forest Park
+            - Blue to O'Hare
+            - Green, Brown ( Outer Loop )
+            - Green, Purple Express, Pink, Orange ( Inner Loop )
+
+    
+
+

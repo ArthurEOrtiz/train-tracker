@@ -26,22 +26,6 @@ function StationMarker() {
     });
   },[])
 
-
-    // stationData.map((station, index)=>{
-    //   console.log(
-    //     index,
-    //     station.station_name,
-    //     station.location.latitude,
-    //     station.location.longitude
-    //     );
-    // });
-
-    // {stationData.map((station, index) =>
-    //   <li key={index}>
-    //     <p>{station.station_name}</p>
-    //   </li>
-    // )}
-
   if (error) {
     return (
       <React.Fragment>
@@ -62,7 +46,7 @@ function StationMarker() {
           <Marker 
           key={index}
           position={{lat: +station.location.latitude, lng: +station.location.longitude}}
-          icon={{url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"}} 
+          icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
           />
         )}
       </React.Fragment>
