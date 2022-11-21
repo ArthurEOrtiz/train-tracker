@@ -25,6 +25,16 @@ function StationMarker() {
     });
   },[])
 
+
+    stationData.map((station, index)=>{
+      console.log(
+        station.station_name,
+        station.location.latitude,
+        station.location.longitude
+        );
+    });
+
+
   return (
     <React.Fragment>
     <h1>STATION DATA</h1>
