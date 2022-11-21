@@ -91,6 +91,12 @@
             - Blue to O'Hare
             - Green, Brown ( Outer Loop )
             - Green, Purple Express, Pink, Orange ( Inner Loop )
+        - The query would have to return 1 marker *if* there are multiple "stop_id"'s
+            - explore the use of filter
+                - filter down to line, then find duplicate "map_id"'s 
+                - was able to filter all blue line stops, now I think I can reduce them into managable markers
+            - explore reduce
+                - i want to iterate through each element of the array and if they have the same map_id it should combine them as one 
 
     
 

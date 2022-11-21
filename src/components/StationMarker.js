@@ -1,14 +1,15 @@
 import React, { useState, useEffect} from 'react';
-import { Marker } from "@react-google-maps/api";
+// import { Marker } from "@react-google-maps/api";
 
 function StationMarker() {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stationData, setStationData] = useState([]);
+  // const [blueLineStation, setBlueLineStations] = useState([]);
 
   useEffect(() =>{
-    fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?blue=true`)
+    fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
     .then(response => {
       if(!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
@@ -18,7 +19,9 @@ function StationMarker() {
     })
     .then((jsonResponse) => {
       setStationData(jsonResponse)
+      // setBlueLineStations(jsonResponse.filter(b => b.blue === true))
       setIsLoaded(true)
+      // console.log(blueLineStation)
     })
     .catch((error) => {
       setError(error)
@@ -26,6 +29,10 @@ function StationMarker() {
     });
   },[])
 
+  const blueLineStops = stationData.filter(b => b.blue === true);
+  console.log(blueLineStops[1].stop_id);
+
+    
   if (error) {
     return (
       <React.Fragment>
@@ -42,16 +49,15 @@ function StationMarker() {
   } else {
     return (
       <React.Fragment>
-        {stationData.map((station, index) =>
-          <Marker 
-          key={index}
-          position={{lat: +station.location.latitude, lng: +station.location.longitude}}
-          icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
-          />
-        )}
+        {/* <Marker 
+        key={index}
+        position={{lat: +station.location.latitude, lng: +station.location.longitude}}
+        icon={{url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
+        />  */}
       </React.Fragment>
     );
   }
 }
+
 
 export default StationMarker;
