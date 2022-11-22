@@ -27,44 +27,12 @@ function StationMarker() {
 
   },[])
 
-  // const uniqueMapIds = Object.keys(stationData.reduce((idTally, stops) => 
-  //   {
-  //     idTally[stops.map_id] = (idTally[stops.map_id] || 0) +1;
-  //     return idTally;
-  //   },{})).map(Number);
-
-  // const uniqueMapIdCount = stationData.reduce((idTally, stops) => 
-  // {
-  //   idTally[stops.map_id] = (idTally[stops.map_id] || 0) +1;
-  //   return idTally;
-  // },{});
-
-
-    // const stations = stationData.reduce((stations, stops, i)=>{
-    //   stations[stops.map_id] = (stations[stops.map_id]|| {
-    //     station_name: stops.station_name,
-    //     lat: +stops.location.latitude,
-    //     lng: +stops.location.longitude,
-    //     stopIds: {stationData.filter(s => {s.map_id.includes(stops.map_id)})}
-    //   });
-    //     return stations;
-    //   },{});
-
-    const stations = stationData.reduce((stations, stops) =>{
-      stations[stops.map_id] = stationData.filter(s => (s.map_id.includes(stops.map_id)));
-      return stations;
-    },{});
-
-
+  const stations = stationData.reduce((stations, stops, i) =>{
+    stations[stops.station_name] = stationData.filter(s => (s.map_id.includes(stops.map_id)));
+    return stations;
+  },{});
 
   console.log(stations);
-  // console.log(stationData[0]);
-  // console.log(stationData[0].map_id);
-  // console.log(uniqueMapIdCount);
-  // const blueLineStops = stationData.filter(b => b.blue === true);
-
-
-    
   if (error) {
     return (
       <React.Fragment>
