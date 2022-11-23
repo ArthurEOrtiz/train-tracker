@@ -37,7 +37,17 @@ function StationMarker() {
 
   },[])
 
-  console.log(stationsByMapId);
+  // const blueLineStations = stationsByMapId.reduce((blueLine, station,i)=>{
+  //     blueLine[station.station_name] = blueLine[station.station_name];
+  //     return blueLine;
+  // },{});
+
+  const blueLineStations = stationsByMapId.reduce((stations, station)=>{
+      stations = station[0];
+  },{})
+
+  console.log(blueLineStations);
+  
 
   if (error) {
     return (
