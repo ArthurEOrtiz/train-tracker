@@ -5,7 +5,8 @@ function StationMarker() {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [stationData, setStationData] = useState([]);
+  const [stopData, setStopData] = useState([]);
+  const [stationsByMapId, setStationsByMapId] = useState([]);
 
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
@@ -17,8 +18,17 @@ function StationMarker() {
       }
     })
     .then((jsonResponse) => {
-      setStationData(jsonResponse)
+      setStopData(jsonResponse)
       setIsLoaded(true)
+      return jsonResponse
+    })
+    .then((data) => {
+        setStationsByMapId(
+          data.reduce((stations, stops, i) =>{
+              stations[stops.station_name] = data.filter(s => (s.map_id.includes(stops.map_id)));
+              return stations;
+            },{})
+        )
     })
     .catch((error) => {
       setError(error)
@@ -27,12 +37,8 @@ function StationMarker() {
 
   },[])
 
-  const stations = stationData.reduce((stations, stops, i) =>{
-    stations[stops.station_name] = stationData.filter(s => (s.map_id.includes(stops.map_id)));
-    return stations;
-  },{});
+  console.log(stationsByMapId);
 
-  console.log(stations);
   if (error) {
     return (
       <React.Fragment>
@@ -53,6 +59,5 @@ function StationMarker() {
     );
   }
 }
-
 
 export default StationMarker;
