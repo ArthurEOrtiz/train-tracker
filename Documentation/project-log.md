@@ -98,6 +98,19 @@
             - explore reduce
                 - i want to iterate through each element of the array and if they have the same map_id it should combine them as one 
 
+        - Ending the night with a new approach.
+            - Will find each unique Map Id with reduce, then filter from there. 
+
+  ### 20221124
+
+      - 0946 
+        - Okay what do I need from stop data to be actually useful. 
+            - station_name : string 
+            - latitude : int
+            - longitude : int 
+            - stops: {stop_id: string, stop_name: string, lines: array}
+
+
     
 
 

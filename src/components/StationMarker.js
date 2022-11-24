@@ -38,6 +38,7 @@ function StationMarker() {
 
   },[])
 
+  // console.log(stopData)
   console.log(Stations)
 
   if (error) {
