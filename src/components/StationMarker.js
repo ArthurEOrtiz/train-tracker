@@ -6,7 +6,7 @@ function StationMarker() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [stopData, setStopData] = useState([]);
-  const [stationsByMapId, setStationsByMapId] = useState([]);
+  const [Stations, setStations] = useState([]);
 
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
@@ -23,11 +23,12 @@ function StationMarker() {
       return jsonResponse
     })
     .then((data) => {
-        setStationsByMapId(
+        setStations(
           data.reduce((stations, stops, i) =>{
-              stations[stops.station_name] = data.filter(s => (s.map_id.includes(stops.map_id)));
-              return stations;
-            },{})
+              stations[stops.station_name] = 
+                  data.filter(s => (s.map_id.includes(stops.map_id)));
+                  return stations;
+                },{})
         )
     })
     .catch((error) => {
@@ -37,17 +38,7 @@ function StationMarker() {
 
   },[])
 
-  // const blueLineStations = stationsByMapId.reduce((blueLine, station,i)=>{
-  //     blueLine[station.station_name] = blueLine[station.station_name];
-  //     return blueLine;
-  // },{});
-
-  const blueLineStations = stationsByMapId.reduce((stations, station)=>{
-      stations = station[0];
-  },{})
-
-  console.log(blueLineStations);
-  
+  console.log(Stations)
 
   if (error) {
     return (
