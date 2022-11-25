@@ -9,31 +9,7 @@ body {
   color: white;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.container {
-  height: 100vh;
-}
-.map-container {
-  width: 100vh;
-  height: 100vh; 
-}
-
-.map {
-  width: 100vh;
-  height: 100vh;
-  background-color: white;
-}
-
-.controls {
-  position: absolute;
-  top: 1 rem;
-  left: 1 rem;
-  z-index: 3;
-  margin: 0;
-  padding: 0;
-  
-}
+} */

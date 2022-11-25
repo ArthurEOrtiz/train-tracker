@@ -19,7 +19,7 @@
 ### 20221101
 - 1800 
 
-    - Got the API to display the map, but I'm having trouble having the key to work in the .env. The example I'm followig along with is using typescript and next.js and i think there is something that i have to retool for things to work properly. Also whats is odd is that when i console.log the API key it will log the key twice.
+    - Got the API to display the map, but I'm having trouble having the key to work in the .env. The example I'm following along with is using typescript and next.js and i think there is something that i have to retool for things to work properly. Also what is odd is that when i console.log the API key it will log the key twice.
     
     - Restarting my computer seemed to get things going and now I have some wierd glitches with git hub.
 
@@ -51,4 +51,70 @@
 ### 2022113
 - 1900
   - Thinking about what components I am actually gonne need when I rebuild this one. 
+    - Station List : List of Stations 
+    - Station : Holds train times for arrivals 
+    - Arrivals : the estimated arrival time of all trains
+    - CTA Map : 
+      - map of the city displaying the Station Board information in a Heads up Display fasion.
+      - Utlizes Google API components
+
+  ### 20221114
+  - 1900
+    - Slowly building static site with some CSS
+    - Got the header and station list table complete without any errors 
+
+  ### 20221115
+    - 1900
+      - Getting my app built out a bit more 
+
+  ### 20221118
+    - 1800
+      - Working on the txt file parsing. 
+      - Gonna have to get back into studying React in general to help grasp importing this txt file. 
+
+  ### 20221119
+    - 0730
+      - Working on diffrent data sets. Found a station list in JSON, working on decoding data. 
+
+  ### 20221120
+
+    - 1800
+      - Been working on this for a few hours without documenting in the log...
+      - I have found a data a set that already comes in JSON, is reposneive to changes and does not require a modification to my CORS policy. 
+      - Looking to trim the data down to something useful to me. I think that maybe using several function. Although Im not sure I should put this into some class style component or something. 
+
+    - 1900
+      - Trying to edit down the data. The problem is that if there is a station with multiple lines then things get a little blurry
+        - using Clark and Lake as an example ( "station_name": "Clark/Lake"). I know that it services the Blue, Pink, Green, Brown, Orange, and Purple Lines. Not the Red or Yellow Lines. 
+        - If I query its map_id 40380, the api returns 4 results. 
+            - Blue to Forest Park
+            - Blue to O'Hare
+            - Green, Brown ( Outer Loop )
+            - Green, Purple Express, Pink, Orange ( Inner Loop )
+        - The query would have to return 1 marker *if* there are multiple "stop_id"'s
+            - explore the use of filter
+                - filter down to line, then find duplicate "map_id"'s 
+                - was able to filter all blue line stops, now I think I can reduce them into managable markers
+            - explore reduce
+                - i want to iterate through each element of the array and if they have the same map_id it should combine them as one 
+
+        - Ending the night with a new approach.
+            - Will find each unique Map Id with reduce, then filter from there. 
+
+  ### 20221124
+
+      - 0946 
+        - Okay what do I need from stop data to be actually useful. 
+            - station_name : string 
+            - latitude : int
+            - longitude : int 
+            - stops: {stop_id: string, stop_name: string, lines: array}
+
+        - So i just need to station to identify weather it is just one line or several. diffrent stops in the same station can serve many lines. 
+
+      - 1626 
+        - got to display every station on the map, now i  need more conditionals to show lines then add arrival times. 
+
+
+    
 
