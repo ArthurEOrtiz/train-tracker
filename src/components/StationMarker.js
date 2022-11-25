@@ -43,7 +43,7 @@ function StationMarker() {
 
   },[])
   
-//console.log(stopData.map(s => s)); // this returns an array of stop objects. 
+// console.log(stopData.map(s => s)); // this returns an array of stop objects. 
 // console.log(stopData); // this is an array. 
 // console.log(Stations); // this is an array.
 
