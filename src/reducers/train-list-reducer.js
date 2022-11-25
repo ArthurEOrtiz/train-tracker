@@ -15,6 +15,10 @@ const reducer = (state = {}, action) => {
         id: id
       }
     });
+    case 'DELETE_TRAIN':
+      let newState = { ...state};
+      delete newState[id];
+      return newState;
     default:
       return state;
   }
