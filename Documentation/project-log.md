@@ -110,6 +110,8 @@
             - longitude : int 
             - stops: {stop_id: string, stop_name: string, lines: array}
 
+        - So i just need to station to identify weather it is just one line or several. diffrent stops in the same station can serve many lines. 
+
 
     
 

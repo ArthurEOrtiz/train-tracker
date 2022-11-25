@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { startTransition } from 'react';
-// import { Marker } from "@react-google-maps/api";
+import { Marker } from "@react-google-maps/api";
 
 function StationMarker() {
 
@@ -23,42 +22,39 @@ function StationMarker() {
       setIsLoaded(true)
       return jsonResponse
     })
-    // .then((data) => {
-    //     setStations(
-    //       data.reduce((stations, stops, i) =>{
-    //           stations[stops.station_name] = 
-    //               data.filter(s => (s.map_id.includes(stops.map_id)));
-    //               return stations;
-    //             },{})
-    //     )
-    // })
+    .then((data) => {
+        setStations(
+          data.reduce((stations, stop, i)=> {
+            stations[stop.station_name] = {
+              station_name: stop.station_name,
+              map_id: stop.map_id,
+              lat: +stop.location.latitude, 
+              lng: +stop.location.longitude,
+            }
+              return stations;
+          },[])
+        )
+    })
     .catch((error) => {
       setError(error)
       setIsLoaded(true)
     });
 
   },[])
+  
+//console.log(stopData.map(s => s)); // this returns an array of stop objects. 
+// console.log(stopData); // this is an array. 
+// console.log(Stations); // this is an array.
 
-  const stations = stopData.reduce((stations, stop, i)=>{
-    let stopsInStation = []
+const stationKeys = Object.keys(Stations);
+// const markerData = stationKeys.map(s => [s, Stations[s]]);
+const markerData = stationKeys.map(s => [Stations[s].station_name, Stations[s].map_id, Stations[s].lat, Stations[s].lng]);
 
-    stations[stop.station_name] = {
-      map_id: stop.map_id,
-      lat: +stop.location.latitude, 
-      lng: +stop.location.longitude,
-      // lines: {
-      //   blue: ((stop.blue)? true : "")
-      // }
-      // lines: [((stop.pnk)? "Pink" : null), [(stop.blue)? "Blue": null]],
-      // stops: stopData.filter(s => s.map_id.includes(stop.map_id))
-      stops : stopsInStation.push("1")
-    }
+console.log(markerData[1]);
+console.log(markerData[1][3]);
 
-      return stations;
-  },{});
 
-  console.log(stations);
-  // console.log(stopData[0].blue);
+
 
   if (error) {
     return (
@@ -76,6 +72,14 @@ function StationMarker() {
   } else {
     return (
       <React.Fragment>
+        {markerData.map((s,i) => 
+        <Marker
+        key={i}
+        position={{lat: s[2], lng: s[3]}}
+        icon={{
+        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
+        />
+        )}
       </React.Fragment>
     );
   }
