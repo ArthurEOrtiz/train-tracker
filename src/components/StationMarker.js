@@ -7,6 +7,7 @@ function StationMarker() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [stopData, setStopData] = useState([]);
   const [Stations, setStations] = useState([]);
+  const [station, setStation] = useState([]);
 
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
@@ -47,14 +48,9 @@ function StationMarker() {
 // console.log(Stations); // this is an array.
 
 const stationKeys = Object.keys(Stations);
-// const markerData = stationKeys.map(s => [s, Stations[s]]);
 const markerData = stationKeys.map(s => [Stations[s].station_name, Stations[s].map_id, Stations[s].lat, Stations[s].lng]);
 
-console.log(markerData[1]);
-console.log(markerData[1][3]);
-
-
-
+console.log(station)
 
   if (error) {
     return (
@@ -78,6 +74,7 @@ console.log(markerData[1][3]);
         position={{lat: s[2], lng: s[3]}}
         icon={{
         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
+        onClick = {() => setStation(s[1])}
         />
         )}
       </React.Fragment>
