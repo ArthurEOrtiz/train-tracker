@@ -1,13 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import { Marker } from "@react-google-maps/api";
+// import { Marker } from "@react-google-maps/api";
 
 function StationMarker() {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [stopData, setStopData] = useState([]);
   const [Stations, setStations] = useState([]);
-  const [station, setStation] = useState([]);
+
 
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
@@ -18,39 +17,54 @@ function StationMarker() {
         return response.json()
       }
     })
-    .then((jsonResponse) => {
-      setStopData(jsonResponse)
-      setIsLoaded(true)
-      return jsonResponse
-    })
-    .then((data) => {
+    .then((response) => {
         setStations(
-          data.reduce((stations, stop, i)=> {
-            stations[stop.station_name] = {
-              station_name: stop.station_name,
-              map_id: stop.map_id,
-              lat: +stop.location.latitude, 
-              lng: +stop.location.longitude,
-            }
-              return stations;
-          },[])
+          response
+          // response.reduce((stations, stop)=> {
+          //   stations[stop.station_name] = {
+          //     station_name: stop.station_name,
+          //     map_id: stop.map_id,
+          //     lat: +stop.location.latitude, 
+          //     lng: +stop.location.longitude,
+          //   }
+          //     return stations;
+          // },{})
         )
     })
     .catch((error) => {
       setError(error)
       setIsLoaded(true)
     });
-
   },[])
   
-// console.log(stopData.map(s => s)); // this returns an array of stop objects. 
-// console.log(stopData); // this is an array. 
-// console.log(Stations); // this is an array.
 
-const stationKeys = Object.keys(Stations);
-const markerData = stationKeys.map(s => [Stations[s].station_name, Stations[s].map_id, Stations[s].lat, Stations[s].lng]);
+// const stationKeys = Object.keys(Stations);
+// const markerData = stationKeys.map(s => [Stations[s].station_name, Stations[s].map_id, Stations[s].lat, Stations[s].lng]);
 
-console.log(station)
+
+  // const groupByStation = Stations.reduce((stations, stop)=>{
+  //   const key = stop["map_id"];
+  //   const curGroup = stations[key] ?? [];
+
+
+  //   return { ...stations, [key]: [...curGroup, stop]};
+  // },{});
+
+  const groupByStation = Stations.reduce((stations, stop, i, array )=>{
+    let stopsArray = [];
+
+    stations[stop.map_id] = {
+              station_name: stop.station_name,
+              map_id: stop.map_id,
+              lat: +stop.location.latitude, 
+              lng: +stop.location.longitude,
+              stops: +stopsArray.push(stop.stop_id)
+            }
+              return stations;
+  },{});
+
+
+console.log(groupByStation);
 
   if (error) {
     return (
@@ -68,15 +82,15 @@ console.log(station)
   } else {
     return (
       <React.Fragment>
-        {markerData.map((s,i) => 
+        {/* {markerData.map((s,i) => 
         <Marker
         key={i}
         position={{lat: s[2], lng: s[3]}}
         icon={{
         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
-        onClick = {() => setStation(s[1])}
+        onClick = {() => console.log(s[1])}
         />
-        )}
+        )} */}
       </React.Fragment>
     );
   }
