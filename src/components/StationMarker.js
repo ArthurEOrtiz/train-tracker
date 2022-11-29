@@ -7,11 +7,9 @@ function StationMarker() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [stations, setStations] = useState([]);
 
-
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
     .then(response => {
-      // console.log(response.ok)
       if(!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
       } else {
@@ -56,16 +54,6 @@ function StationMarker() {
     });
   },[])
   
-
-  console.log(stations)
-
-  // const objTest = groupByStation.map((s,i) => [ s.map_id , s.lat, s.lng, s.station_name ]);
-
-  // console.log(objTest[40010]);
-
-  console.log(isLoaded);
-  console.log(error)
-
   if (error) {
     return (
       <React.Fragment>
