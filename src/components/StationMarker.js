@@ -72,9 +72,9 @@ function StationMarker() {
 
   // console.log(groupByStation);
 
-  const objTest = groupByStation.map((s,i) => [ s.map_id , s.lat, s.lng, s.station_name ]);
+  // const objTest = groupByStation.map((s,i) => [ s.map_id , s.lat, s.lng, s.station_name ]);
 
-  console.log(objTest);
+  // console.log(objTest[40010]);
 
 
   if (error) {
@@ -93,15 +93,12 @@ function StationMarker() {
   } else {
     return (
       <React.Fragment>
-        {groupByStation.map((s) => 
         <Marker
-        key={s.map_id}
-        position={{lat: s.lat, lng: s.lng}}
-        icon={{
-        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
-        onClick = {() => console.log(s.station_name)}
+          key={33}
+          position={{lat: 41.870851, lng: -87.776812}}
+          icon={{
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
         />
-        )}
       </React.Fragment>
     );
   }
