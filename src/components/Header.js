@@ -1,9 +1,12 @@
 import React from "react";
+import './Header.css';
 
 function Header(){
   return (
     <React.Fragment>
-      <h1>CTA TRAIN TRACKER</h1>
+      <div className="App-header">
+        <h1>CHICAGO "L" TIMES</h1>
+      </div>
     </React.Fragment>
   );
 }

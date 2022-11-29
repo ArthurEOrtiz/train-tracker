@@ -1,0 +1,23 @@
+.StationList-Container {
+  background-color: #00a1de;
+  color: White;
+  font-size: calc(8px + 3vmin);
+  padding-top: 1px;
+  padding-left: 1ch;
+  padding-bottom: .5em;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90vmin;
+  text-align: left;
+}
+
+tbody{
+  font-size: .7em;
+}
+
+tr:nth-child(even) {
+  background-color: white;
+  color: black;
+}
