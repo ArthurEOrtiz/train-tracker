@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-// import { Marker } from "@react-google-maps/api";
+import { Marker } from "@react-google-maps/api";
 
 function StationMarker() {
 
@@ -42,29 +42,40 @@ function StationMarker() {
 // const markerData = stationKeys.map(s => [Stations[s].station_name, Stations[s].map_id, Stations[s].lat, Stations[s].lng]);
 
 
-  // const groupByStation = Stations.reduce((stations, stop)=>{
-  //   const key = stop["map_id"];
-  //   const curGroup = stations[key] ?? [];
-
-
-  //   return { ...stations, [key]: [...curGroup, stop]};
-  // },{});
-
   const groupByStation = Stations.reduce((stations, stop, i, array )=>{
-    let stopsArray = [];
-
+    const stopsArray = array.filter(s => s.map_id === stop.map_id);
+    const stopsObj = stopsArray.map(s => {
+      return {  stop_id: s.stop_id,
+                stop_name: s.stop_name,
+                ada: s.ada,
+                red: s.red,
+                blue: s.blue,
+                green: s.g,
+                brown: s.brn,
+                purple: s.p,
+                purple_express: s.pexp,
+                yello: s.y,
+                pink: s.pnk,
+                orange: s.o
+              }
+      }
+    );
     stations[stop.map_id] = {
               station_name: stop.station_name,
-              map_id: stop.map_id,
+              map_id: +stop.map_id,
               lat: +stop.location.latitude, 
               lng: +stop.location.longitude,
-              stops: +stopsArray.push(stop.stop_id)
+              stops : stopsObj
             }
               return stations;
-  },{});
+  },[]);
 
+  // console.log(groupByStation);
 
-console.log(groupByStation);
+  const objTest = groupByStation.map((s,i) => [ s.map_id , s.lat, s.lng, s.station_name ]);
+
+  console.log(objTest);
+
 
   if (error) {
     return (
@@ -82,15 +93,15 @@ console.log(groupByStation);
   } else {
     return (
       <React.Fragment>
-        {/* {markerData.map((s,i) => 
+        {groupByStation.map((s) => 
         <Marker
-        key={i}
-        position={{lat: s[2], lng: s[3]}}
+        key={s.map_id}
+        position={{lat: s.lat, lng: s.lng}}
         icon={{
         url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}} 
-        onClick = {() => console.log(s[1])}
+        onClick = {() => console.log(s.station_name)}
         />
-        )} */}
+        )}
       </React.Fragment>
     );
   }

@@ -116,6 +116,9 @@
         - got to display every station on the map, now i  need more conditionals to show lines then add arrival times. 
 
 
-    
+  ### 20221128
+
+    - 1900 
+      - Have the data process to what I want, I will have to re-do that code smell later. 
 
 
