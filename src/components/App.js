@@ -3,13 +3,13 @@ import './App.css';
 import Header from "./Header";
 import ArrivalList from "./ArrivalList";
 import Map from "./Map";
+import ArrivalControl from "./ArrivalControl";
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <ArrivalList />
-      <Map />
+      <ArrivalControl />
     </React.Fragment>
   );
 }
