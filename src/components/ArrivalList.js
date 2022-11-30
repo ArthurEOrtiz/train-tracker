@@ -1,10 +1,9 @@
 import React from 'react';
-// import React, { useState, useEffect } from 'react';
-import Station from './Station';
-import "./StationList.css";
+import Arrival from './Arrival';
+import "./ArrivalList.css";
 
 
-function StationList(){
+function ArrivalList(){
     
   const sampleStation = [
     {
@@ -36,10 +35,10 @@ function StationList(){
 
     return (
       <React.Fragment>
-        <div className="StationList-Container">
+        <div className="ArrivalList-Container">
           <h2>Arrival Times</h2>
-          <div className="StationList-Table-Container">
-            <table className="StationList-Table">
+          <div className="ArrivalList-Table-Container">
+            <table className="ArrivalList-Table">
               <thead>
                 <tr>
                   <th>Line</th>
@@ -49,12 +48,12 @@ function StationList(){
                 </tr>
               </thead>
               <tbody>
-              {sampleStation.map((station, index) =>
-                <Station 
-                line={station.line} 
-                station={station.station}
-                destination={station.destination}
-                arrivalTime={station.arrivalTime}
+              {sampleStation.map((arrival, index) =>
+                <Arrival 
+                line={arrival.line} 
+                station={arrival.station}
+                destination={arrival.destination}
+                arrivalTime={arrival.arrivalTime}
                 key={index}
                 />
               )}
@@ -68,4 +67,4 @@ function StationList(){
 }
 
 
-export default StationList;
+export default ArrivalList;

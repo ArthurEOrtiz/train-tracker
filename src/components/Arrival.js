@@ -1,6 +1,6 @@
 import React from "react";
 
-function Station(props){
+function Arrival(props){
 
   return (
     <React.Fragment>
@@ -14,4 +14,4 @@ function Station(props){
   );
 }
 
-export default Station;
+export default Arrival;
