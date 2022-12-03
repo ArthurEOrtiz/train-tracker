@@ -125,6 +125,7 @@
 
     - 1100
       - Looking into how to best manage state for this application. 
+      - Going to work through React's game tutorial, maybe some other for a refresher of fundementals.
       
 
   
