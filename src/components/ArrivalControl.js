@@ -58,7 +58,7 @@ function ArrivalControl(){
     });
   },[])
   
-console.log(stations)  
+ 
 
 
   return (
