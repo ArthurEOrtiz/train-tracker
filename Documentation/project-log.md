@@ -119,6 +119,14 @@
   ### 20221128
 
     - 1900 
-      - Have the data process to what I want, I will have to re-do that code smell later. 
+      - Have the data process to what I want, I will have to re-do that code smell later.
+
+  ### 20221203 
+
+    - 1100
+      - Looking into how to best manage state for this application. 
+      
+
+  
 
 
