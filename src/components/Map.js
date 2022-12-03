@@ -11,7 +11,7 @@ const center =  {
   lng: -87.6251
 }; 
 
-function Map(){
+function Map(props){
 
   const{ isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -44,12 +44,18 @@ function Map(){
     return ( 
     <React.Fragment>  
       <GoogleMap
-        zoom={12} 
+        zoom={11} 
         center={center}
         mapContainerClassName={mapContainerStyle}
         options={options}
       >
-      <StationMarker/>
+      {props.stationList.map((s) => 
+        <StationMarker
+        key = {s.map_id}
+        lat = {s.lat}
+        lng = {s.lng}
+        />
+      )}
       </GoogleMap>
     </React.Fragment>
     );
