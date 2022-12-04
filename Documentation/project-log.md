@@ -126,6 +126,17 @@
     - 1100
       - Looking into how to best manage state for this application. 
       - Going to work through React's game tutorial, maybe some other for a refresher of fundementals.
+
+  ### 20221204
+
+    - 1130
+      - Main Bug: The Markers will not display on initial load. 
+        - Will display if I re-render map component 
+        - useEffect is causing ArrivalControl to render twice. 
+        - My expensive calculation runs too  much. 
+
+      - Found [this resource at github](https://github.com/JustFly1984/react-google-maps-api/issues/2978) and solved the issue by using a diffrent marker component within the google map api called MarkerF. Currently researching the diffrence between the two. 
+
       
 
   

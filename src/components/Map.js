@@ -1,7 +1,7 @@
 import React from "react";
 import { useMemo } from "react";
 import "./Map.css";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import StationMarker from "./StationMarker";
 
 const libraries = ["places"]; // 1/2 this might go into stations later
@@ -40,34 +40,35 @@ function Map(props){
       </React.Fragment>
     )
   }
-  if (props.stationsLoaded) {
+
+  if (isLoaded) {
+    console.log(`Map is being rendered`);
     return ( 
       <React.Fragment>  
         <GoogleMap
-          zoom={11} 
+          zoom={10} 
           center={center}
           mapContainerClassName={mapContainerStyle}
           options={options}
         >
-        {/* {props.stationList.map((s) => 
+        {props.stationList.map((s) => 
           <StationMarker
           key = {s.map_id}
           lat = {s.lat}
           lng = {s.lng}
           />
-        )} */}
+        )}
         {/* <StationMarker 
           key={2}
           lat = {41.870851}
           lng = {-87.776812}
         /> */}
-        <Marker 
-          key= {1}
+        {/* <MarkerF 
+          key= {3}
           position ={{lat: 41.870851, lng: -87.776812}}
           icon={{
             url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}
-        />
-        
+        /> */}
         </GoogleMap>
       </React.Fragment>
       );

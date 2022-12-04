@@ -1,11 +1,12 @@
 import React from "react";
-import { Marker } from "@react-google-maps/api";
+import { MarkerF } from "@react-google-maps/api";
 
 function StationMarker(props) {
 
+  console.log(`Markers are being rendered`);
   return (
     <React.Fragment>
-      <Marker 
+      <MarkerF 
         key = {props.map_id}
         position = {{lat: props.lat, lng: props.lng}}
         icon={{
