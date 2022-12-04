@@ -1,5 +1,6 @@
 // import React from 'react';
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+// import React, { useState, useMemo } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -14,6 +15,7 @@ function ArrivalControl(){
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
     .then(response => {
+      console.log(response.ok)
       if(!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
       } else {
@@ -58,17 +60,33 @@ function ArrivalControl(){
     });
   },[])
   
- 
 
 
-  return (
-    <React.Fragment>
-      <ArrivalList />
-      <Map 
-        stationList={stations}
-        />
-    </React.Fragment>
-  );
+
+  if (error) {
+    return (
+      <React.Fragment>
+        <h1>Error Loading Station Markers</h1>
+        <p>Error: {error}</p>
+      </React.Fragment>
+    );
+  } else if (!isLoaded) {
+    return (
+      <React.Fragment>
+        <h1>...LOADING STATION MARKERS ON MAP...</h1>
+      </React.Fragment>
+      
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <ArrivalList />
+        <Map 
+          stationList={stations}
+          />
+      </React.Fragment>
+    );
+  }
 }
 
 export default ArrivalControl;
