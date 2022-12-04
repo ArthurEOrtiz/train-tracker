@@ -15,7 +15,7 @@ function ArrivalControl(){
   useEffect(() =>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
     .then(response => {
-      console.log(response.ok)
+      // console.log(response.ok)
       if(!response.ok) {
         throw new Error(`${response.status}: ${response.statusText}`);
       } else {
@@ -60,9 +60,6 @@ function ArrivalControl(){
     });
   },[])
   
-
-
-
   if (error) {
     return (
       <React.Fragment>
@@ -77,12 +74,13 @@ function ArrivalControl(){
       </React.Fragment>
       
     );
-  } else {
+  } else if (isLoaded) {
     return (
       <React.Fragment>
         <ArrivalList />
         <Map 
           stationList={stations}
+          stationsLoaded={isLoaded}
           />
       </React.Fragment>
     );
