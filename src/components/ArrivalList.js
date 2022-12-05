@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Arrival from './Arrival';
 import "./ArrivalList.css";
+// import PropTypes from 'prop-types';
 
 
-function ArrivalList(){
-    
+function ArrivalList(props){
+  // const [error, setError] = useState(null);
+  // const [isLoaded, setIsLoaded] = useState(false);
+  const [arrivals, setArrivals] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}mapid=40830&outputType=JSON`
+    )
+      .then(response => response.json())
+      .then((jsonifiedResponse) => {
+          console.log(jsonifiedResponse)
+          setArrivals(jsonifiedResponse)
+      });
+    }, [])
+
+    console.log(arrivals);
+
+
+
   const sampleStation = [
     {
       line: 'Blue' ,
@@ -31,6 +49,8 @@ function ArrivalList(){
       arrivalTime: 'Delayed',
     }
   ];
+
+  // console.log(props.monitoredStations[0].map_id);
 
 
     return (

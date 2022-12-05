@@ -59,13 +59,17 @@ function ArrivalControl(){
   }, []);
 
   const handleStationSelection = (id) => {
-    const findDuplicateStation = selectedStations.find(({map_id}) => map_id === id);  
+
+    const findDuplicateStation = selectedStations.find(({map_id}) => map_id === id); 
+    
     if (findDuplicateStation === undefined) {
       const newStationSelection = selectedStations.concat(stations[id]);
       setSelectedStations(newStationSelection);
     }
+
   }
-  console.log(selectedStations);
+
+  // console.log(selectedStations);
 
   if (error) {
     return (
@@ -84,7 +88,9 @@ function ArrivalControl(){
   } else if (isLoaded) {
     return (
       <React.Fragment>
-        <ArrivalList />
+        <ArrivalList
+          monitoredStations = {selectedStations}
+        />
         <Map 
           stationList={stations}
           onStationSelection = {handleStationSelection}
