@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import "./Map.css";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import StationMarker from "./StationMarker";
+import PropTypes from 'prop-types';
 
 const libraries = ["places"]; // 1/2 this might go into stations later
 const mapContainerStyle = "map-container";
@@ -42,7 +43,7 @@ function Map(props){
   }
 
   if (isLoaded) {
-    console.log(`Map is being rendered`);
+    // console.log(`Map is being rendered`);
     return ( 
       <React.Fragment>  
         <GoogleMap
@@ -53,28 +54,20 @@ function Map(props){
         >
         {props.stationList.map((s) => 
           <StationMarker
-          key = {s.map_id}
+          mapId = {s.map_id}
           lat = {s.lat}
           lng = {s.lng}
+          whenStationClicked = { props.onStationSelection }
           />
         )}
-        {/* <StationMarker 
-          key={2}
-          lat = {41.870851}
-          lng = {-87.776812}
-        /> */}
-        {/* <MarkerF 
-          key= {3}
-          position ={{lat: 41.870851, lng: -87.776812}}
-          icon={{
-            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}}
-        /> */}
         </GoogleMap>
       </React.Fragment>
       );
   }
 }
 
-
+Map.propTypes = {
+  stationList: PropTypes.array
+}
 
 export default Map;
