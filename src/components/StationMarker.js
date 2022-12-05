@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 function StationMarker(props) {
 
-  // console.log(props.mapId);
   return (
     <React.Fragment>
       <MarkerF 

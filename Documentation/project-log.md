@@ -137,6 +137,9 @@
 
       - Found [this resource at github](https://github.com/JustFly1984/react-google-maps-api/issues/2978) and solved the issue by using a diffrent marker component within the google map api called MarkerF. Currently researching the diffrence between the two. 
 
+    - 1830
+      - Now able to select stations
+
       
 
   

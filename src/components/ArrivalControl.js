@@ -59,11 +59,14 @@ function ArrivalControl(){
   }, []);
 
   const handleStationSelection = (id) => {
-    const newStationSelection = selectedStations.concat(stations[id]);
-    setSelectedStations(newStationSelection);
+    const findDuplicateStation = selectedStations.find(({map_id}) => map_id === id);  
+    if (findDuplicateStation === undefined) {
+      const newStationSelection = selectedStations.concat(stations[id]);
+      setSelectedStations(newStationSelection);
+    }
   }
+  console.log(selectedStations);
 
-  console.log(selectedStations)
   if (error) {
     return (
       <React.Fragment>
