@@ -5,9 +5,9 @@ import "./ArrivalList.css";
 
 
 function ArrivalList(props){
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [arrivals, setArrivals] = useState([]);
+  // const [error, setError] = useState(null);
+  // const [isLoaded, setIsLoaded] = useState(false);
+  // const [arrivals, setArrivals] = useState([]);
 
   // useEffect(() => {
   //   fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=40830&outputType=JSON`
@@ -41,32 +41,33 @@ function ArrivalList(props){
   //   console.log(arrivals.ctatt.eta.staId)
 
 
-  const handleFetchtArrivals = (mapid) => {
-    fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${mapid}&outputType=JSON`
-      )
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`${response.status}: ${response.statusText}`);
-          } else {
-            return response.json()
-          }
-        })
-        .then((jsonifiedResponse) => {
-            // console.log(jsonifiedResponse)
-            setArrivals(jsonifiedResponse)
-            setIsLoaded(true)
-        })
-        .catch((error) => {
-          setError(error.message)
-          setIsLoaded(true)
-        });
-  } 
+  // const handleFetchtArrivals = (mapid) => {
+  //   fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${mapid}&outputType=JSON`
+  //     )
+  //       .then(response => {
+  //         if (!response.ok) {
+  //           throw new Error(`${response.status}: ${response.statusText}`);
+  //         } else {
+  //           return response.json()
+  //         }
+  //       })
+  //       .then((jsonifiedResponse) => {
+  //           console.log(jsonifiedResponse)
+  //           setArrivals(jsonifiedResponse)
+  //           setIsLoaded(true)
+  //       })
+  //       .catch((error) => {
+  //         setError(error.message)
+  //         setIsLoaded(true)
+  //       });
+  // } 
 
-  const arrivalsToDisplay = props.monitoredStations.reduce((acc, element)=>{
-    return acc.concat(element.map_id);
-  },[])
+  // const mapIdsToDisplay = props.monitoredStations.reduce((acc, element)=>{
+  //   return acc.concat(element.map_id);
+  // },[])
 
-  console.log(arrivalsToDisplay);
+  // const postArrivalTimesToBoard = mapIdsToDisplay.map(s => handleFetchtArrivals(s));
+  
   // console.log(props.monitoredStations[0].map_id);
   // console.log(props.monitoredStations);
 
