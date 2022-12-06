@@ -137,8 +137,26 @@
 
       - Found [this resource at github](https://github.com/JustFly1984/react-google-maps-api/issues/2978) and solved the issue by using a diffrent marker component within the google map api called MarkerF. Currently researching the diffrence between the two. 
 
-    - 1830
-      - Now able to select stations
+### 20221205
+  - 1000
+    - Working with the CTA arrivals API now and Im running into some issue 
+      - CORS policy change
+        - Will have to research how to change that but for right now I hae a chrome extention that is a work around. 
+        - The CTA api threw and error and my code did not catch it. 
+        - ``` 
+          {
+            TimeStamp : "2022-12-05T10:56:55"
+                errCd : "100"
+                errNm : "Required parameter 'mapid or stpid or stnid' is missing."
+                 tmst : "2022-12-05T10:56:55"
+          }
+          ```
+        - intentionally breaking the link to the API renders this raw response
+          - ````
+            Response {type: 'cors', url: 'http://lapi.transitchicago.com/api/1.0/ttarrivals.(MY_API_KEY_GOES_HERE)mapid=40830&outputType=JSON', redirected: false, status: 200, ok: true, …}body: (...)bodyUsed: trueheaders: Headers[[Prototype]]: Headersappend: ƒ append()delete: ƒ delete()entries: ƒ entries()forEach: ƒ forEach()get: ƒ ()has: ƒ has()keys: ƒ keys()set: ƒ ()values: ƒ values()constructor: ƒ Headers()Symbol(Symbol.iterator): ƒ entries()Symbol(Symbol.toStringTag): "Headers"[[Prototype]]: Objectok: trueredirected: falsestatus: 200statusText: "OK"type: "cors"url: "http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=(MY_API_KEY_GOES_HERE)mapid=40830&outputType=JSON"[[Prototype]]: Response
+
+          ````
+
 
       
 
