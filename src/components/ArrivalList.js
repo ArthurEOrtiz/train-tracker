@@ -62,9 +62,12 @@ function ArrivalList(props){
   //       });
   // } 
 
-  // const mapIdsToDisplay = props.monitoredStations.reduce((acc, element)=>{
-  //   return acc.concat(element.map_id);
-  // },[])
+
+  const mapIdsToDisplay = props.monitoredStations.reduce((acc, element)=>{
+    return acc.concat(element.map_id);
+  },[])
+
+  console.log(mapIdsToDisplay);
 
   // const postArrivalTimesToBoard = mapIdsToDisplay.map(s => handleFetchtArrivals(s));
   
