@@ -6,6 +6,7 @@ function StationMarker(props) {
   
   return (
     <React.Fragment>
+      {/* {console.log(`StationMarker has rendered`)} */}
       <MarkerF 
         key = {props.mapId}
         position = {{lat: props.lat, lng: props.lng}}

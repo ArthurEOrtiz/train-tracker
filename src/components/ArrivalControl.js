@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useEffect } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -8,6 +9,7 @@ function ArrivalControl(){
   const [isLoaded, setIsLoaded] = useState(false);
   const [stations, setStations] = useState([]);
   const [selectedStations, setSelectedStations] = useState([]);
+  const [arrivals, setArrivals] = useState([]);
 
    // Chicago Station API
     useMemo(()=>{
@@ -66,10 +68,14 @@ function ArrivalControl(){
       const newStationSelection = selectedStations.concat(stations[id]);
       setSelectedStations(newStationSelection);
     }
-
   }
 
-  // console.log(selectedStations);
+  const mapIdsToDisplay = selectedStations.reduce((acc, element)=>{
+      return acc.concat(element.map_id);
+    },[]);
+
+
+  console.log(mapIdsToDisplay);
 
   if (error) {
     return (
@@ -88,9 +94,7 @@ function ArrivalControl(){
   } else if (isLoaded) {
     return (
       <React.Fragment>
-        <ArrivalList
-          monitoredStations = {selectedStations}
-        />
+        <ArrivalList/>
         <Map 
           stationList={stations}
           onStationSelection = {handleStationSelection}
