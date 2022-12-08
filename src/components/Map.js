@@ -43,7 +43,7 @@ function Map(props){
   }
 
   if (isLoaded) {
-    // console.log(`Map is being rendered`);
+    console.log(`Map is being rendered`);
     return ( 
       <React.Fragment>  
         <GoogleMap

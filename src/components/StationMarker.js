@@ -3,7 +3,7 @@ import { MarkerF } from "@react-google-maps/api";
 import PropTypes from 'prop-types';
 
 function StationMarker(props) {
-  
+  // console.log("Stations are rendered")
   return (
     <React.Fragment>
       {/* {console.log(`StationMarker has rendered`)} */}

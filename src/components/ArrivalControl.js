@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -52,6 +52,7 @@ function ArrivalControl(){
                       return stations;
           },[])
         )
+
         setIsLoaded(true)
     })
     .catch((error) => {
@@ -75,7 +76,18 @@ function ArrivalControl(){
     },[]);
 
 
+  const fetchCTAArrivals = mapIdsToDisplay.reduce((acc, element)=>{
+    const data = fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${}&mapid=${element}&outputType=JSON`)
+    .then(response=> {return response.json()})
+
+    return acc.concat(data);
+  },[])
+
+  console.log(fetchCTAArrivals);
   console.log(mapIdsToDisplay);
+  // console.log(arrivals);
+
+
 
   if (error) {
     return (
