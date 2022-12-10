@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useCallback } from 'react';
+// import { useCallback } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -77,19 +77,18 @@ function ArrivalControl(){
 
 
   const fetchCTAArrivals = mapIdsToDisplay.reduce((acc, element)=>{
-const data = fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${element}&outputType=JSON`)
-    .then(response=> {return response.json()})
-    // .then(responses => Promise.all(responses))
-    // .then(responses => Promise.all(responses.map(r => r.json())))
-    // .then(response=> {response.json()})
-    // .then(data => { return data})
+    const data = fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${element}&outputType=JSON`)
+    .then(response=> {
+      return response.json()
+    })
 
     return acc.concat(data);
   },[])
 
+
   // console.log(Object.keys(fetchCTAArrivals));
   console.log(fetchCTAArrivals);
-  console.log(mapIdsToDisplay);
+  // console.log(mapIdsToDisplay);
   // console.log(arrivals);
   
 
