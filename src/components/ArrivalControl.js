@@ -77,15 +77,21 @@ function ArrivalControl(){
 
 
   const fetchCTAArrivals = mapIdsToDisplay.reduce((acc, element)=>{
-    const data = fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${}&mapid=${element}&outputType=JSON`)
+const data = fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${element}&outputType=JSON`)
     .then(response=> {return response.json()})
+    // .then(responses => Promise.all(responses))
+    // .then(responses => Promise.all(responses.map(r => r.json())))
+    // .then(response=> {response.json()})
+    // .then(data => { return data})
 
     return acc.concat(data);
   },[])
 
+  // console.log(Object.keys(fetchCTAArrivals));
   console.log(fetchCTAArrivals);
   console.log(mapIdsToDisplay);
   // console.log(arrivals);
+  
 
 
 
