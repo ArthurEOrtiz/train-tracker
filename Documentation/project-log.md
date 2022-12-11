@@ -160,7 +160,15 @@
         - So I get a 200 response if there is some sort of error and the actual error will live in the returned json object 
 
       - refactoring this api call to work with props.
+      - will have to refactor code to move the CTA API call to to Arival Control 
 
+### 20221207 
+
+  - Spending time researching API's and Fetch within the REACT frame work. 
+
+### 20221210
+
+  - The fetch that I have written returns the entire HTTP response. I need to extract that actual JSON object. 
 
       
 
