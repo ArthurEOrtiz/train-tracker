@@ -1,6 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import { useEffect } from 'react';
-// import { useCallback } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -82,15 +80,17 @@ function ArrivalControl(){
 
     Promise.all(requests)
     .then(responses => Promise.all(responses.map(r=> r.json())))
-    .then(responses => setArrivals(responses));
+    .then(responses => setArrivals(responses.reduce((acc, element, i, array)=>{
+      acc[i] = array[i].ctatt.eta
+      return acc.flat()
+    },[])
+    ));
 
   },[selectedStations]);
 
 
-  console.log(arrivals[0].ctatt.eta);
-  
 
-
+  // console.log(arrivals);
 
   if (error) {
     return (
@@ -109,7 +109,9 @@ function ArrivalControl(){
   } else if (isLoaded) {
     return (
       <React.Fragment>
-        <ArrivalList/>
+        <ArrivalList
+        arrivals = {arrivals}
+        />
         <Map 
           stationList={stations}
           onStationSelection = {handleStationSelection}

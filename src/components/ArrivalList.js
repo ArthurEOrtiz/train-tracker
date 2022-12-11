@@ -1,37 +1,32 @@
 import React from 'react';
 import Arrival from './Arrival';
 import "./ArrivalList.css";
-// import PropTypes from 'prop-types';
+
 
 
 function ArrivalList(props){
 
-  const sampleStation = [
-    {
-      line: 'Blue' ,
-      station: 'Rosemont',
-      destination: 'O\'hare',
-      arrivalTime: '12:35 pm',
-    },
-    {
-      line: 'Red',
-      station: 'Jackson',
-      destination: 'Howard',
-      arrivalTime: '12:42 pm',
-    },
-    {
-      line: 'Pink',
-      station: '18th',
-      destination: '54th/Cermak',
-      arrivalTime: '12:52 pm',
-    },
-    {
-      line: 'Pink',
-      station: 'Morgan',
-      destination: 'Loop\'L\'',
-      arrivalTime: 'Delayed',
+
+  const testData = props.arrivals.map((arrival, index) =>{
+    const arrTime = new Date (arrival.arrT);
+    let hour = arrTime.getHours();
+    let minute = arrTime.getMinutes();
+    const amPm = hour >= 12 ? 'PM' : 'AM'
+    hour = hour % 12
+    hour = hour ? hour : 12;
+    minute = minute < 10 ? '0' + minute : minute;
+
+    const amPmArrTime = `${hour}:${minute} ${amPm}`
+
+    return {
+      line: arrival.rt,
+      station: arrival.staNm,
+      destination: arrival.destNm,
+      arrivalTime: amPmArrTime
     }
-  ];
+  })
+
+  console.log(testData);
 
     return (
       <React.Fragment>
@@ -49,15 +44,15 @@ function ArrivalList(props){
                 </tr>
               </thead>
               <tbody>
-              {sampleStation.map((arrival, index) =>
+              {/* {props.arrivals.map((arrival, index) =>
                 <Arrival 
-                line={arrival.line} 
-                station={arrival.station}
-                destination={arrival.destination}
-                arrivalTime={arrival.arrivalTime}
+                line={arrival.rt} 
+                station={arrival.staNm}
+                destination={arrival.destNm}
+                arrivalTime={arrival.arrt}
                 key={index}
                 />
-              )}
+              )} */}
               </tbody>
             </table>
           </div>
