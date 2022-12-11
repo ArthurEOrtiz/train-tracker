@@ -71,6 +71,7 @@ function ArrivalControl(){
   }
 
 
+
   useEffect(()=> {
     const mapIds =  selectedStations.reduce((acc, element)=>{
         return acc.concat(element.map_id);
