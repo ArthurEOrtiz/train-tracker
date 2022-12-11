@@ -1,6 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import { useEffect } from 'react';
-// import { useCallback } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -73,6 +71,7 @@ function ArrivalControl(){
   }
 
 
+
   useEffect(()=> {
     const mapIds =  selectedStations.reduce((acc, element)=>{
         return acc.concat(element.map_id);
@@ -87,10 +86,10 @@ function ArrivalControl(){
   },[selectedStations]);
 
 
+  };
+
   console.log(arrivals[0].ctatt.eta);
   
-
-
 
   if (error) {
     return (
