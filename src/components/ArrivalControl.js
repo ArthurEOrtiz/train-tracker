@@ -81,11 +81,28 @@ function ArrivalControl(){
 
     Promise.all(requests)
     .then(responses => Promise.all(responses.map(r=> r.json())))
-    .then(responses => setArrivals(responses.reduce((acc, element, i, array)=>{
+    .then(responses => responses.reduce((acc, element, i, array)=>{
       acc[i] = array[i].ctatt.eta
       return acc.flat()
-    },[])
-    ));
+    },[]))
+    .then(response => setArrivals(response.map((arrival, index) =>{
+      const arrTime = new Date (arrival.arrT);
+      let hour = arrTime.getHours();
+      let minute = arrTime.getMinutes();
+      const amPm = hour >= 12 ? 'PM' : 'AM'
+      hour = hour % 12
+      hour = hour ? hour : 12;
+      minute = minute < 10 ? '0' + minute : minute;
+  
+      const amPmArrTime = `${hour}:${minute} ${amPm}`
+  
+      return {
+        line: arrival.rt,
+        station: arrival.staNm,
+        destination: arrival.destNm,
+        arrivalTime: amPmArrTime
+      }
+    })));
 
   },[selectedStations]);
 

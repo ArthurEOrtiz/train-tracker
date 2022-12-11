@@ -7,27 +7,6 @@ import "./ArrivalList.css";
 function ArrivalList(props){
 
 
-  const arrivalData = props.arrivals.map((arrival, index) =>{
-    const arrTime = new Date (arrival.arrT);
-    let hour = arrTime.getHours();
-    let minute = arrTime.getMinutes();
-    const amPm = hour >= 12 ? 'PM' : 'AM'
-    hour = hour % 12
-    hour = hour ? hour : 12;
-    minute = minute < 10 ? '0' + minute : minute;
-
-    const amPmArrTime = `${hour}:${minute} ${amPm}`
-
-    return {
-      line: arrival.rt,
-      station: arrival.staNm,
-      destination: arrival.destNm,
-      arrivalTime: amPmArrTime
-    }
-  })
-
-  console.log(arrivalData)
-
     return (
       <React.Fragment>
         {/* {console.log("arrival list has rendered")} */}
@@ -44,7 +23,7 @@ function ArrivalList(props){
                 </tr>
               </thead>
               <tbody>
-              {arrivalData.map((arrival, index) =>
+              {props.arrivals.map((arrival, index) =>
                 <Arrival 
                 line={arrival.line} 
                 station={arrival.station}
