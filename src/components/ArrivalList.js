@@ -7,7 +7,7 @@ import "./ArrivalList.css";
 function ArrivalList(props){
 
 
-  const testData = props.arrivals.map((arrival, index) =>{
+  const arrivalData = props.arrivals.map((arrival, index) =>{
     const arrTime = new Date (arrival.arrT);
     let hour = arrTime.getHours();
     let minute = arrTime.getMinutes();
@@ -26,7 +26,7 @@ function ArrivalList(props){
     }
   })
 
-  console.log(testData);
+  console.log(arrivalData)
 
     return (
       <React.Fragment>
@@ -44,15 +44,15 @@ function ArrivalList(props){
                 </tr>
               </thead>
               <tbody>
-              {/* {props.arrivals.map((arrival, index) =>
+              {arrivalData.map((arrival, index) =>
                 <Arrival 
-                line={arrival.rt} 
-                station={arrival.staNm}
-                destination={arrival.destNm}
-                arrivalTime={arrival.arrt}
+                line={arrival.line} 
+                station={arrival.station}
+                destination={arrival.destination}
+                arrivalTime={arrival.arrivalTime}
                 key={index}
                 />
-              )} */}
+              )}
               </tbody>
             </table>
           </div>
