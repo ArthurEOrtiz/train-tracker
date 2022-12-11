@@ -72,45 +72,27 @@ function ArrivalControl(){
   }
 
   const mapIdsToDisplay = selectedStations.reduce((acc, element)=>{
-      return acc.concat(element.map_id);
-    },[]);
-
-
-  // const fetchCTAArrivals = mapIdsToDisplay.reduce((acc, element)=>{
-  //   const data = fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${element}&outputType=JSON`)
-  //   .then(response=> {
-  //     return response.json()
-  //   })
-
-  //   return acc.concat(data);
-  // },[])
-
-
-  // console.log(Object.keys(fetchCTAArrivals));
-  // console.log(fetchCTAArrivals);
+        return acc.concat(element.map_id);
+      },[]);
   
-
-  
-  const getArrivals = async (mpid) => {
-
-    const res = await fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${mpid}&outputType=JSON`);
+  const getArrivals = async (id) => {
+    
+    const res = await fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`);
 
     const data = await res.json();
+  
     
     setArrivals(arrivals.concat(data))
 
   };
 
   useEffect(()=>{
-    mapIdsToDisplay.forEach(s => getArrivals(s));
+    mapIdsToDisplay.map(s => getArrivals(s));
   },[selectedStations]);
 
-  // mapIdsToDisplay.forEach(s => getArrivals(s));
 
   console.log(arrivals);
-  // console.log(mapIdsToDisplay);
-
-  
+  console.log(mapIdsToDisplay);
 
   if (error) {
     return (
