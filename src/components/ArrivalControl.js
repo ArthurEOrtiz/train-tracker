@@ -1,5 +1,4 @@
 import React, { useState, useMemo, useEffect } from 'react';
-// import { useCallback } from 'react';
 import ArrivalList from './ArrivalList';
 import Map from './Map';
 
@@ -71,28 +70,26 @@ function ArrivalControl(){
     }
   }
 
-  const mapIdsToDisplay = selectedStations.reduce((acc, element)=>{
+
+
+  useEffect(()=> {
+    const mapIds =  selectedStations.reduce((acc, element)=>{
         return acc.concat(element.map_id);
       },[]);
-  
-  const getArrivals = async (id) => {
     
-    const res = await fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`);
+    const requests = mapIds.map(id => fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`));
 
-    const data = await res.json();
-  
-    
-    setArrivals(arrivals.concat(data))
+    Promise.all(requests)
+    .then(responses => Promise.all(responses.map(r=> r.json())))
+    .then(responses => setArrivals(responses));
 
-  };
-
-  useEffect(()=>{
-    mapIdsToDisplay.map(s => getArrivals(s));
   },[selectedStations]);
 
 
-  console.log(arrivals);
-  console.log(mapIdsToDisplay);
+  };
+
+  console.log(arrivals[0].ctatt.eta);
+  
 
   if (error) {
     return (
