@@ -91,7 +91,7 @@ function ArrivalControl(){
 
 
 
-  // console.log(arrivals);
+  console.log(arrivals);
 
   if (error) {
     return (
