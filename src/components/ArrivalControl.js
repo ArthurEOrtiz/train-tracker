@@ -10,7 +10,7 @@ function ArrivalControl(){
   const [selectedStations, setSelectedStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
 
-   // Chicago Station API
+   // Station API
     useMemo(()=>{
     fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`)
     .then(response => {
@@ -70,8 +70,7 @@ function ArrivalControl(){
     }
   }
 
-
-
+  // Arrival API
   useEffect(()=> {
     const mapIds =  selectedStations.reduce((acc, element)=>{
         return acc.concat(element.map_id);
@@ -79,7 +78,7 @@ function ArrivalControl(){
     
     const requests = mapIds.map(id => fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`));
 
-    Promise.all(requests)
+    Promise.all(requests) 
     .then(responses => Promise.all(responses.map(r=> r.json())))
     .then(responses => responses.reduce((acc, element, i, array)=>{
       acc[i] = array[i].ctatt.eta
@@ -106,9 +105,8 @@ function ArrivalControl(){
 
   },[selectedStations]);
 
-
-
   console.log(arrivals);
+  console.log(selectedStations)
 
   if (error) {
     return (
