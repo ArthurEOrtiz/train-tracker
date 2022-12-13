@@ -107,11 +107,11 @@ function ArrivalControl(){
   },[selectedStations]);
 
   const handleOnMouseOverStation = (mapId) => {
-    return console.log(mapId)
+    return mapId;
   }
 
   console.log(arrivals.length);
-  // console.log(selectedStations)
+  console.log(selectedStations)
 
   if (error) {
     return (
