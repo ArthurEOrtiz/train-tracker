@@ -9,6 +9,7 @@ function ArrivalControl(){
   const [stations, setStations] = useState([]);
   const [selectedStations, setSelectedStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
+  
 
    // Station API
     useMemo(()=>{
@@ -105,8 +106,12 @@ function ArrivalControl(){
 
   },[selectedStations]);
 
-  console.log(arrivals);
-  console.log(selectedStations)
+  const handleOnMouseOverStation = (mapId) => {
+    return console.log(mapId)
+  }
+
+  console.log(arrivals.length);
+  // console.log(selectedStations)
 
   if (error) {
     return (
@@ -131,6 +136,7 @@ function ArrivalControl(){
         <Map 
           stationList={stations}
           onStationSelection = {handleStationSelection}
+          onStationHover = {handleOnMouseOverStation}
           />
       </React.Fragment>
     );

@@ -7,6 +7,11 @@
   padding-bottom: .5em;
 }
 
+.ArrivalList-Table-Container {
+  height: 8em;
+  overflow: auto;
+}
+
 table {
   border-collapse: collapse;
   width: 90vmin;
