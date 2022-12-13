@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import ArrivalList from './ArrivalList';
+import StationList from './StationList';
 import Map from './Map';
+
 
 function ArrivalControl(){
 
@@ -110,8 +112,12 @@ function ArrivalControl(){
     return mapId;
   }
 
-  console.log(arrivals.length);
-  console.log(selectedStations)
+  const handleDeleteStation = (s_name) => {
+    const newSelectedStations = selectedStations.filter(s => s.station_name !== s_name)
+    setSelectedStations(newSelectedStations);
+  }
+
+  console.log(selectedStations);
 
   if (error) {
     return (
@@ -132,6 +138,10 @@ function ArrivalControl(){
       <React.Fragment>
         <ArrivalList
         arrivals = {arrivals}
+        />
+        <StationList
+        selectedStations = {selectedStations}
+        deleteStations = {handleDeleteStation}
         />
         <Map 
           stationList={stations}
