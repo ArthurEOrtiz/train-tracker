@@ -41,9 +41,7 @@ function Map(props){
       </React.Fragment>
     )
   }
-
-  if (isLoaded) {
-    console.log(`Map is being rendered`);
+  
     return ( 
       <React.Fragment>  
         <GoogleMap
@@ -58,16 +56,18 @@ function Map(props){
           lat = {s.lat}
           lng = {s.lng}
           whenStationClicked = { props.onStationSelection }
+          whenStationHovered = { props.onStationHover}
           />
         )}
         </GoogleMap>
       </React.Fragment>
       );
-  }
+  
 }
 
 Map.propTypes = {
   stationList: PropTypes.array
+
 }
 
 export default Map;

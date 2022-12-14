@@ -5,6 +5,14 @@
   padding-top: 1px;
   padding-left: 1ch;
   padding-bottom: .5em;
+  float: left;
+  /* width: 50vw */
+}
+
+.ArrivalList-Table-Container {
+  height: 8em;
+  overflow: auto;
+  
 }
 
 table {

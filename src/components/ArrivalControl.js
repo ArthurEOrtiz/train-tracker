@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import ArrivalList from './ArrivalList';
+import StationList from './StationList';
 import Map from './Map';
+
 
 function ArrivalControl(){
 
@@ -9,6 +11,7 @@ function ArrivalControl(){
   const [stations, setStations] = useState([]);
   const [selectedStations, setSelectedStations] = useState([]);
   const [arrivals, setArrivals] = useState([]);
+  
 
    // Station API
     useMemo(()=>{
@@ -105,8 +108,17 @@ function ArrivalControl(){
 
   },[selectedStations]);
 
-  console.log(arrivals);
-  console.log(selectedStations)
+  const handleOnMouseOverStation = (mapId) => {
+    return mapId;
+  }
+
+  const handleDeleteStation = (s_name) => {
+    const newSelectedStations = selectedStations.filter(s => s.station_name !== s_name);
+    setSelectedStations(newSelectedStations);
+    console.log(s_name);
+  }
+
+  console.log(selectedStations);
 
   if (error) {
     return (
@@ -125,12 +137,19 @@ function ArrivalControl(){
   } else if (isLoaded) {
     return (
       <React.Fragment>
-        <ArrivalList
-        arrivals = {arrivals}
-        />
+        <div className='HUD-Container'>
+          <ArrivalList
+          arrivals = {arrivals}
+          />
+          <StationList
+          selectedStations = {selectedStations}
+          deleteStations = {handleDeleteStation}
+          />
+        </div>
         <Map 
           stationList={stations}
           onStationSelection = {handleStationSelection}
+          onStationHover = {handleOnMouseOverStation}
           />
       </React.Fragment>
     );

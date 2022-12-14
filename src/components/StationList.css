@@ -1,0 +1,22 @@
+.StationList-Container {
+  background-color: #00a1de;
+  color: White;
+  font-size: calc(8px + 3vmin);
+  padding-top: 1px;
+  padding-left: 1ch;
+  padding-bottom: .5em;
+  /* width: 60vw; */
+}
+
+.StationList-Table-Container {
+  height: 13em;
+  overflow: auto;
+  /* width: 10% */
+
+}
+
+/* .StationList-Table-Body {
+  width:fit-content
+} */
+
+

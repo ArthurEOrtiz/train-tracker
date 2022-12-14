@@ -6,10 +6,8 @@ import "./ArrivalList.css";
 
 function ArrivalList(props){
 
-
     return (
       <React.Fragment>
-        {/* {console.log("arrival list has rendered")} */}
         <div className="ArrivalList-Container">
           <h2>Arrival Times</h2>
           <div className="ArrivalList-Table-Container">
