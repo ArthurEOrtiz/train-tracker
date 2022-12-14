@@ -5,9 +5,18 @@
   padding-top: 1px;
   padding-left: 1ch;
   padding-bottom: .5em;
+  /* width: 60vw; */
 }
 
 .StationList-Table-Container {
-  height: 5em;
+  height: 13em;
   overflow: auto;
+  /* width: 10% */
+
 }
+
+/* .StationList-Table-Body {
+  width:fit-content
+} */
+
+

@@ -137,13 +137,15 @@ function ArrivalControl(){
   } else if (isLoaded) {
     return (
       <React.Fragment>
-        <ArrivalList
-        arrivals = {arrivals}
-        />
-        <StationList
-        selectedStations = {selectedStations}
-        deleteStations = {handleDeleteStation}
-        />
+        <div className='HUD-Container'>
+          <ArrivalList
+          arrivals = {arrivals}
+          />
+          <StationList
+          selectedStations = {selectedStations}
+          deleteStations = {handleDeleteStation}
+          />
+        </div>
         <Map 
           stationList={stations}
           onStationSelection = {handleStationSelection}

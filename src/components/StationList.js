@@ -8,9 +8,9 @@ function StationList (props){
     <React.Fragment>
       <div className="StationList-Container">
         <div className="StationList-Table-Container">
-        <h2>Monitered Stations</h2>
-        <table className="ArrivalList-Table">
-          <tbody>
+        <h3>Monitered Stations</h3>
+        <table className="StationList-Table">
+          <tbody className="StationList-Table-Body">
             {props.selectedStations.map((station, index) =>
               <Station
               station={station.station_name}
