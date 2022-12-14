@@ -14,7 +14,7 @@ function StationList (props){
             {props.selectedStations.map((station, index) =>
               <Station
               station={station.station_name}
-              deleteStations={station.deleteStations}
+              deleteStations={props.deleteStations}
               key={index}
               />
             )}

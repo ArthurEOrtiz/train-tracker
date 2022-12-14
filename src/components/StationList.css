@@ -8,21 +8,6 @@
 }
 
 .StationList-Table-Container {
-  height: 4em;
+  height: 5em;
   overflow: auto;
 }
-
-/* table {
-  border-collapse: collapse;
-  width: 90vmin;
-  text-align: left;
-}
-
-tbody{
-  font-size: .7em;
-}
-
-tr:nth-child(even) {
-  background-color: white;
-  color: black;
-} */

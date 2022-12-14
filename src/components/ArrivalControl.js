@@ -113,8 +113,9 @@ function ArrivalControl(){
   }
 
   const handleDeleteStation = (s_name) => {
-    const newSelectedStations = selectedStations.filter(s => s.station_name !== s_name)
+    const newSelectedStations = selectedStations.filter(s => s.station_name !== s_name);
     setSelectedStations(newSelectedStations);
+    console.log(s_name);
   }
 
   console.log(selectedStations);
