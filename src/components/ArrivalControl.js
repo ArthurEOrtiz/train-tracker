@@ -82,39 +82,37 @@ function ArrivalControl(){
   }
 
   // Arrival API
-  useEffect(()=> {
-    const mapIds =  selectedStations.reduce((acc, element)=>{
-        return acc.concat(element.map_id);
-      },[]);
-    
-    const requests = mapIds.map(id => fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`));
-
-    Promise.all(requests) 
-    .then(responses => Promise.all(responses.map(r=> r.json())))
-    .then(responses => responses.reduce((acc, element, i, array)=>{
-      acc[i] = array[i].ctatt.eta
-      return acc.flat()
-    },[]))
-    .then(response => setArrivals(response.map((arrival, index) =>{
-      const arrTime = new Date (arrival.arrT);
-      let hour = arrTime.getHours();
-      let minute = arrTime.getMinutes();
-      const amPm = hour >= 12 ? 'PM' : 'AM'
-      hour = hour % 12
-      hour = hour ? hour : 12;
-      minute = minute < 10 ? '0' + minute : minute;
+  useEffect(() => {
+    const mapIds = selectedStations.map(station => station.map_id);
   
-      const amPmArrTime = `${hour}:${minute} ${amPm}`
+    const requests = mapIds.map(id =>
+      fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`)
+        .then(response => response.json())
+    );
   
-      return {
-        line: arrival.rt,
-        station: arrival.staNm,
-        destination: arrival.destNm,
-        arrivalTime: amPmArrTime
-      }
-    })));
-
-  },[selectedStations]);
+    Promise.all(requests)
+      .then(responses => responses.map(response => response.ctatt.eta).flat())
+      .then(etas => {
+        const formattedEtas = etas.map(eta => {
+          const arrTime = new Date(eta.arrT);
+          const hour = arrTime.getHours() % 12 || 12;
+          const minute = arrTime.getMinutes().toString().padStart(2, '0');
+          const amPm = arrTime.getHours() >= 12 ? 'PM' : 'AM';
+          const amPmArrTime = `${hour}:${minute} ${amPm}`;
+  
+          return {
+            line: eta.rt,
+            station: eta.staNm,
+            destination: eta.destNm,
+            arrivalTime: amPmArrTime
+          };
+        });
+  
+        setArrivals(formattedEtas);
+      })
+      .catch(error => console.error(error));
+  }, [selectedStations]);
+  
 
   const handleOnMouseOverStation = (mapId) => {
     return mapId;
