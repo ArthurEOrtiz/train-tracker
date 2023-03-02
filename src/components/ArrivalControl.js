@@ -15,41 +15,50 @@ function ArrivalControl(){
 
    // Station API
 
+  const fetchStationsData = async () => {
+    try {
+      const response = await fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`);
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+      const jsonResponse = await response.json();
+      const stationsData = jsonResponse.reduce((stations, stop, i, array ) => {
+        const stopsArray = array.filter(s => s.map_id === stop.map_id);
+        const stopsObj = stopsArray.map(s => {
+          return {
+            stop_id: s.stop_id,
+            stop_name: s.stop_name,
+            ada: s.ada,
+            red: s.red,
+            blue: s.blue,
+            green: s.g,
+            brown: s.brn,
+            purple: s.p,
+            purple_express: s.pexp,
+            yello: s.y,
+            pink: s.pnk,
+            orange: s.o
+          }
+        });
+        stations[stop.map_id] = {
+          station_name: stop.station_name,
+          map_id: +stop.map_id,
+          lat: +stop.location.latitude,
+          lng: +stop.location.longitude,
+          stops : stopsObj
+        }
+        return stations;
+      },[]);
+      return stationsData;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://data.cityofchicago.org/resource/8pix-ypme.json?`);
-        if (!response.ok) {
-          throw new Error(`${response.status}: ${response.statusText}`);
-        }
-        const jsonResponse = await response.json();
-        const stationsData = jsonResponse.reduce((stations, stop, i, array ) => {
-          const stopsArray = array.filter(s => s.map_id === stop.map_id);
-          const stopsObj = stopsArray.map(s => {
-            return {
-              stop_id: s.stop_id,
-              stop_name: s.stop_name,
-              ada: s.ada,
-              red: s.red,
-              blue: s.blue,
-              green: s.g,
-              brown: s.brn,
-              purple: s.p,
-              purple_express: s.pexp,
-              yello: s.y,
-              pink: s.pnk,
-              orange: s.o
-            }
-          });
-          stations[stop.map_id] = {
-            station_name: stop.station_name,
-            map_id: +stop.map_id,
-            lat: +stop.location.latitude,
-            lng: +stop.location.longitude,
-            stops : stopsObj
-          }
-          return stations;
-        },[]);
+        const stationsData = await fetchStationsData();
         setStations(stationsData);
         setIsLoaded(true);
       } catch (error) {
@@ -59,6 +68,7 @@ function ArrivalControl(){
     };
     fetchData();
   }, []);
+  
   
 
   const handleStationSelection = (id) => {
