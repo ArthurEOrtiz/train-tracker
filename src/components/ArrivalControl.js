@@ -83,23 +83,21 @@ function ArrivalControl(){
 
   // Arrival API
   useEffect(() => {
-    const mapIds = selectedStations.map(station => station.map_id);
-  
-    const requests = mapIds.map(id =>
-      fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`)
-        .then(response => response.json())
-    );
-  
-    Promise.all(requests)
-      .then(responses => responses.map(response => response.ctatt.eta).flat())
-      .then(etas => {
+    const fetchArrivals = async () => {
+      try {
+        const mapIds = selectedStations.map(station => station.map_id);
+        const responses = await Promise.all(mapIds.map(id =>
+          fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`)
+            .then(response => response.json())
+        ));
+        const etas = responses.flatMap(response => response.ctatt.eta);
         const formattedEtas = etas.map(eta => {
           const arrTime = new Date(eta.arrT);
           const hour = arrTime.getHours() % 12 || 12;
           const minute = arrTime.getMinutes().toString().padStart(2, '0');
           const amPm = arrTime.getHours() >= 12 ? 'PM' : 'AM';
           const amPmArrTime = `${hour}:${minute} ${amPm}`;
-  
+    
           return {
             line: eta.rt,
             station: eta.staNm,
@@ -107,11 +105,15 @@ function ArrivalControl(){
             arrivalTime: amPmArrTime
           };
         });
-  
         setArrivals(formattedEtas);
-      })
-      .catch(error => console.error(error));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    
+    fetchArrivals();
   }, [selectedStations]);
+  
   
 
   const handleOnMouseOverStation = (mapId) => {
