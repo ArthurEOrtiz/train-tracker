@@ -87,7 +87,7 @@ function ArrivalControl(){
       try {
         const mapIds = selectedStations.map(station => station.map_id);
         const responses = await Promise.all(mapIds.map(id =>
-          fetch(`http://lapi.transitchicago.com/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`)
+          fetch(`http://localhost:5000/api/1.0/ttarrivals.aspx?key=${process.env.REACT_APP_CTA_API_KEY}&mapid=${id}&outputType=JSON`)
             .then(response => response.json())
         ));
         const etas = responses.flatMap(response => response.ctatt.eta);
